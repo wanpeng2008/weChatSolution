@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -28,6 +29,13 @@ public class WechatApp {
     private String accessPath;
     @Column(name = "ENABLE_FLAG", nullable = false)
     private boolean enableFlag;
+    @Column(name = "NAME", nullable = false)
+    private String name;
+    @Column(name = "COMMENTS")
+    private String comments;
+    @Column(name="CREATE_TIME", nullable = false)
+    private Date createTime;
+
 
 
     public UUID getId() {
@@ -84,5 +92,29 @@ public class WechatApp {
 
     public void setEnableFlag(boolean enableFlag) {
         this.enableFlag = enableFlag;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

@@ -15,10 +15,3 @@ logging:
   level:
     org.springframework.web: DEBUG
     com.github.binarywang.demo.wechat: DEBUG
-
-wechat:
-  mp:
-    appId: wx063a8d6f8bcc4dc8
-    secret: cfd5293de6b00362d128a8525cbbfbf1
-    token: ZjpostItZone9380
-    aesKey: KFzHEy5OUevazBn8EeJXc9DGTca1q83p07TgorZpwvk

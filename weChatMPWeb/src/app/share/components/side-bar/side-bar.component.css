@@ -1,0 +1,77 @@
+.sidebar {
+  background-color: #293038;
+  width: 100%;
+  height: 100%;
+}
+.sidebar-nav{
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.sidebar-title {
+  height: 40px;
+  background: #42485B;
+  color: #fff;
+  line-height: 40px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  overflow: hidden;
+}
+.sidebar-nav ul {
+  width: 200px;
+  max-height: 200px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.console-component-sidebar .sidebar-nav li a {
+  display: block;
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+}
+.console-component-sidebar .sidebar-trans {
+  -o-transition: all 0.12s ease, 0.12s ease;
+  -ms-transition: all 0.12s ease, 0.12s ease;
+  -moz-transition: all 0.12s ease, 0.12s ease;
+  -webkit-transition: all 0.12s ease, 0.12s ease;
+}
+.sidebar-title-icon {
+  display: inline-block;
+  margin: 0 8px 0 20px;
+  vertical-align: middle;
+  transition: transform 0.12s;
+  -o-transition: -o-transform 0.12s;
+  -ms-transition: -ms-transform 0.12s;
+  -moz-transition: -moz-transform 0.12s;
+  -webkit-transition: -webkit-transform 0.12s;
+}
+.sidebar-nav-active .sidebar-title-icon {
+  vertical-align: text-top;
+  transform: rotate(90deg);
+}
+.sidebar-nav .nav-title {
+  float: left;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  width: 130px;
+}
+.sidebar-title-icon {
+  font-size: 85%;
+}
+.nav-icon {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  float: left;
+  color: #aeb9c2;
+}
+

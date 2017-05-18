@@ -1,47 +1,31 @@
-package com.example.demo.entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+package com.example.demo.model;
 import java.util.Date;
 import java.util.UUID;
 
 /**
  * Created by 万鹏 on 2017/5/13.
  */
-@Entity
-@Table(name = "WECHAT_APP")
-public class WechatApp {
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    @JsonIgnore
-    private UUID id;
-    @Column(name = "APP_ID",nullable=false,unique=true)
+
+public class WechatAppVO {
+
+    private String id;
     private String appId;
-    @Column(name = "SECRET",nullable = false)
     private String secret;
-    @Column(name = "TOKEN",nullable=false)
     private String token;
-    @Column(name = "ASE_KEY",nullable=false)
     private String aseKey;
-    @Column(name = "ACCESS_PATH",nullable=false,unique=true)
     private String accessPath;
-    @Column(name = "ENABLE_FLAG", nullable = false)
     private boolean enableFlag;
-    @Column(name = "NAME", nullable = false)
     private String name;
-    @Column(name = "COMMENTS")
     private String comments;
-    @Column(name="CREATE_TIME", nullable = false)
     private Date createTime;
 
 
-    public UUID getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

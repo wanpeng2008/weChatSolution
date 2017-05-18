@@ -3,7 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home.component";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent}
+  {
+    path: '', component: HomeComponent,
+    children: [
+      { path: '', redirectTo: 'wechatApp', pathMatch: 'full' },
+      {
+        path: 'wechatApp', loadChildren: 'app/pages/wechat-app/wechat-app.module#WechatAppModule'
+      }
+    ]
+  }
 ];
 
 @NgModule({
