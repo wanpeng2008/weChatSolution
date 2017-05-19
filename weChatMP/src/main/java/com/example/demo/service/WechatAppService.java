@@ -16,6 +16,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by pengwan on 2017/5/15.
@@ -28,7 +29,7 @@ public class WechatAppService {
         return wechatAppRepository.findByAccessPath(accessPath);
     }
 
-    public WechatApp getById(String id) {
+    public WechatApp getById(UUID id) {
         return wechatAppRepository.findById(id);
     }
 
@@ -38,8 +39,8 @@ public class WechatAppService {
     public Page<WechatApp> findByWechatAppVO(WechatAppVO wechatAppVO, Pageable pageable) {
         Specification<WechatApp> spec = (root, query, cb) -> {
             List<Predicate> list = new ArrayList<>();
-            if(wechatAppVO.getId()!=null && wechatAppVO.getId().trim().length()>0){
-                list.add(cb.equal(root.get("uuid").as(Integer.class), wechatAppVO.getId()));
+            if(wechatAppVO.getId()!=null){
+                list.add(cb.equal(root.get("uuid").as(UUID.class), wechatAppVO.getId()));
             }
             Predicate[] p = new Predicate[list.size()];
             return cb.and(list.toArray(p));

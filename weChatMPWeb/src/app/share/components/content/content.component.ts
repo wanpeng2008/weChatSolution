@@ -10,6 +10,8 @@ export class ContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.debug('ContentComponent init')
+
   }
 
 }

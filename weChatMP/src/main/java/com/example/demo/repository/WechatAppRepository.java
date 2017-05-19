@@ -16,7 +16,7 @@ import java.util.UUID;
 public interface WechatAppRepository extends JpaRepository<WechatApp, UUID> {
     WechatApp findByAccessPath(String accessPath);
 
-    WechatApp findById(String id);
+    WechatApp findById(UUID id);
 
     Page<WechatApp> findAll(Specification<WechatApp> spec, Pageable pageable);
 }

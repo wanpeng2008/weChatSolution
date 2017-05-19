@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by pengwan on 2017/5/18.
@@ -24,15 +25,14 @@ public class WechatAppController {
     @Autowired
     private WechatAppService wechatAppService;
 
-    @GetMapping(value = "/{id}", produces = "text/plain;charset=utf-8")
-/*    public WechatApp get(@ModelAttribute("wechatAppVO") WechatAppVO wechatAppVO){
-        return wechatAppService.getById() @PathVariable("id") Integer id
-    }*/
-    public WechatApp getById(@PathVariable(value="id" ,required =true ) String id){
+    @GetMapping(value = "/{id}", produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public WechatApp getById(@PathVariable(value="id" ,required =true ) UUID id){
         return wechatAppService.getById(id);
     }
-    @GetMapping(produces = "text/plain;charset=utf-8")
-    public Page<WechatApp> pageList(WechatAppVO wechatAppVO, @RequestParam(name="page",required = false, defaultValue = "1") Integer  page, @RequestParam (name="size",required = false, defaultValue = "20") Integer  size){
+    @GetMapping(produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Page<WechatApp> pageList(WechatAppVO wechatAppVO, @RequestParam(name="page",required = false, defaultValue = "0") Integer  page, @RequestParam (name="size",required = false, defaultValue = "20") Integer  size){
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Pageable pageable = new PageRequest(page, size, sort);
         return wechatAppService.findByWechatAppVO(wechatAppVO,pageable);
