@@ -1,5 +1,15 @@
 <p>
   wechat-app works!
 </p>
-<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+<ng2-smart-table
+  [settings]="settings"
+  [source]="source"
+  (create)="onCreate()"
+  (createConfirm)="onCreateConfirm()"
+  (edit)="onEdit()"
+  (editConfirm)="onEditConfirm()"
+  (delete)="onDelete()"
+  (deleteConfirm)="onDeleteConfirm"
+></ng2-smart-table>
+
 
