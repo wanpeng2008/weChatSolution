@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {WechatAppService} from "../../share/services/wechat-app.service";
 import {WechatAppModel} from "../../share/models/wechat-app-model";
 import {LocalDataSource} from "ng2-smart-table";
+import {FormBuilder, FormControl, Validators, FormGroup} from "@angular/forms";
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
   selector: 'app-wechat-app',
   templateUrl: './wechat-app.component.html',
-  styleUrls: ['./wechat-app.component.css']
+  styleUrls: ['./wechat-app.component.css'],
 })
 export class WechatAppComponent implements OnInit {
 
@@ -14,15 +16,30 @@ export class WechatAppComponent implements OnInit {
   private selectedWechatApp:WechatAppModel;
   private settings;
   private source;
+  private addForm: FormGroup;
+  private addModalTitle: string = '新增微信公众号接入'
+  @ViewChild('addModal') addModal: ModalDirective;
 
-  constructor(private wechatAppService:WechatAppService) {
+  constructor(private wechatAppService:WechatAppService, private fb: FormBuilder) {
     this.source = new LocalDataSource();
+    this.createAddForm();
   }
 
+  createAddForm() {
+    this.addForm = this.fb.group({
+      name: ['', Validators.required ],
+      appId: ['', Validators.required ],
+      secret: ['', Validators.required ],
+      token: ['', Validators.required ],
+      aseKey: ['', Validators.required ],
+      accessPath: ['', Validators.required ],
+      comments: ''
+    });
+  }
   ngOnInit() {
     console.debug('WechatAppComponent init')
     this.settings = {
-      mode: external,
+      mode: 'external',
       hideHeader: false,
       hideSubHeader: false,
       noDataMessage: '没有数据',
@@ -115,6 +132,21 @@ export class WechatAppComponent implements OnInit {
   }
   onDeleteConfirm(){
     console.debug('onDeleteConfirm invoked')
+  }
+  hideAddModal(formValue){
+    if(!!formValue){
+      this.createApp(formValue)
+    }
+    this.addModal.hide()
+  }
+  createApp(wechatAppInfo){
+    this.wechatAppService.saveOrUpdateWechatApp(wechatAppInfo).subscribe(
+      ()=>{},
+      error=>{},
+      ()=>{
+        this.onSearch()
+      }
+    )
   }
 
 }

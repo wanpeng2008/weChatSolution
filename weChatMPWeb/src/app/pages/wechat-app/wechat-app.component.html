@@ -4,12 +4,74 @@
 <ng2-smart-table
   [settings]="settings"
   [source]="source"
-  (create)="onCreate()"
+  (create)="addModal.show()"
   (createConfirm)="onCreateConfirm()"
   (edit)="onEdit()"
   (editConfirm)="onEditConfirm()"
   (delete)="onDelete()"
   (deleteConfirm)="onDeleteConfirm"
 ></ng2-smart-table>
+
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{addModalTitle}}</h4>
+        <button type="button" class="close pull-right" (click)="hideAddModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm" novalidate>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>名称:
+              <div class="msg-display-inline" [hidden]="addForm.get('name').status=='VALID' || addForm.get('name').untouched">不能为空</div>
+              <input class="form-control" formControlName="name">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>appId:
+              <div class="msg-display-inline" [hidden]="addForm.get('appId').status=='VALID' || addForm.get('appId').untouched">不能为空</div>
+              <input class="form-control" formControlName="appId">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>secret:
+              <div class="msg-display-inline" [hidden]="addForm.get('secret').status=='VALID' || addForm.get('secret').untouched">不能为空</div>
+              <input class="form-control" formControlName="secret">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>token:
+              <div class="msg-display-inline" [hidden]="addForm.get('token').status=='VALID' || addForm.get('token').untouched">不能为空</div>
+              <input class="form-control" formControlName="token">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>aseKey:
+              <div class="msg-display-inline" [hidden]="addForm.get('aseKey').status=='VALID' || addForm.get('aseKey').untouched">不能为空</div>
+              <input class="form-control" formControlName="aseKey">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block"><span class="star">*</span>接入路径:
+              <div class="msg-display-inline" [hidden]="addForm.get('accessPath').status=='VALID' || addForm.get('accessPath').untouched">不能为空</div>
+              <input class="form-control" formControlName="accessPath">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block">备注:
+              <textarea rows="2" class="form-control" formControlName="comments"></textarea>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" [disabled]="addForm.status=='INVALID'" (click)="hideAddModal(addForm.value)">保存</button> &nbsp;
+        <button class="btn btn-primary" (click)="hideAddModal()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

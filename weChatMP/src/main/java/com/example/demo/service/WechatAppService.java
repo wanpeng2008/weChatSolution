@@ -39,12 +39,16 @@ public class WechatAppService {
     public Page<WechatApp> findByWechatAppVO(WechatAppVO wechatAppVO, Pageable pageable) {
         Specification<WechatApp> spec = (root, query, cb) -> {
             List<Predicate> list = new ArrayList<>();
-            if(wechatAppVO.getId()!=null){
+            if(wechatAppVO!=null && wechatAppVO.getId()!=null){
                 list.add(cb.equal(root.get("uuid").as(UUID.class), wechatAppVO.getId()));
             }
             Predicate[] p = new Predicate[list.size()];
             return cb.and(list.toArray(p));
         };
         return this.findAll(spec, pageable);
+    }
+
+    public WechatApp save(WechatApp wechatApp) {
+        return wechatAppRepository.save(wechatApp);
     }
 }

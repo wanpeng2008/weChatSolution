@@ -6,6 +6,7 @@ import {HomeModule} from "./home/home.module";
 import {WechatAppModule} from "./wechat-app/wechat-app.module";
 import { PagesComponent } from './pages.component';
 import {ShareModule} from "../share/share.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import {ShareModule} from "../share/share.module";
     PagesRoutingModule,
     HomeModule,
     ShareModule,
+    ReactiveFormsModule
   ],
   declarations: [PagesComponent]
 })

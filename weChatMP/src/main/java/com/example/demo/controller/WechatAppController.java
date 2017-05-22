@@ -5,13 +5,18 @@ import com.example.demo.model.WechatAppVO;
 import com.example.demo.service.WechatAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,10 +37,30 @@ public class WechatAppController {
     }
     @GetMapping(produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Page<WechatApp> pageList(WechatAppVO wechatAppVO, @RequestParam(name="page",required = false, defaultValue = "0") Integer  page, @RequestParam (name="size",required = false, defaultValue = "20") Integer  size){
+    public Page<WechatApp> pageList(@RequestBody(required = false) WechatAppVO wechatAppVO, @RequestParam(name="page",required = false, defaultValue = "0") Integer  page, @RequestParam (name="size",required = false, defaultValue = "20") Integer  size){
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Pageable pageable = new PageRequest(page, size, sort);
         return wechatAppService.findByWechatAppVO(wechatAppVO,pageable);
+    }
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<WechatApp> add(@RequestBody WechatAppVO wechatAppVO){
+        WechatApp wechatApp = new WechatApp();
+        BeanUtils.copyProperties(wechatAppVO, wechatApp);
+        wechatApp.setId(UUID.randomUUID());
+        wechatApp.setCreateTime(new Date());
+        wechatApp.setEnableFlag(true);
+        return new ResponseEntity<>(wechatAppService.save(wechatApp), HttpStatus.CREATED);
+    }
+    @RequestMapping(method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<WechatApp> update(@RequestBody WechatAppVO wechatAppVO){
+        if(wechatAppVO.getId()==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        WechatApp wechatApp = this.wechatAppService.getById(wechatAppVO.getId());
+        BeanUtils.copyProperties(wechatAppVO, wechatApp);
+        return new ResponseEntity<>(wechatAppService.save(wechatApp), HttpStatus.CREATED);
     }
 }
 

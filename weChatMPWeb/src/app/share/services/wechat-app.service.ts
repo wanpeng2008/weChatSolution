@@ -8,6 +8,7 @@ import {SITE_HOST_URL} from "../config/env.conf";
 export class WechatAppService {
   private getWechatAppInfoUrl = (api: string, id: string) => `${api}wechatApp/?id=${id}`;
   private getWechatAppListUrl = (api: string) => `${api}wechatApp`;
+  private saveOrUpdateWechatAppUrl = (api: string) => `${api}wechatApp`;
 
   constructor(private http: Http) { }
 
@@ -34,4 +35,20 @@ export class WechatAppService {
   }
 
 
+  saveOrUpdateWechatApp(wechatAppInfo: any) {
+    if(wechatAppInfo.id){
+
+    }else {
+      return new Observable((observer: Observer<any>) => {
+        this.http.post(this.saveOrUpdateWechatAppUrl(SITE_HOST_URL),wechatAppInfo).map(res => res.json()).subscribe(
+          res => {
+            observer.next(res)
+            observer.complete()
+          }, err => {
+            observer.error(err)
+          }
+        )
+      })
+    }
+  }
 }
