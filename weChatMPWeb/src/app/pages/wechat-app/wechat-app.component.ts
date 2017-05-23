@@ -16,17 +16,22 @@ export class WechatAppComponent implements OnInit {
   private selectedWechatApp:WechatAppModel;
   private settings;
   private source;
-  private addForm: FormGroup;
-  private addModalTitle: string = '新增微信公众号接入'
-  @ViewChild('addModal') addModal: ModalDirective;
+  private createForm: FormGroup;
+  private updateForm: FormGroup;
+  private isAllSelected: boolean;
+  private createModalTitle: string = '新增微信公众号接入'
+  private updateModalTitle: string = '修改微信公众号接入信息'
+  @ViewChild('createModal') createModal: ModalDirective;
+  @ViewChild('updateModal') updateModal: ModalDirective;
 
   constructor(private wechatAppService:WechatAppService, private fb: FormBuilder) {
     this.source = new LocalDataSource();
-    this.createAddForm();
+    this.initCreateForm();
+    this.initUpdateForm()
   }
 
-  createAddForm() {
-    this.addForm = this.fb.group({
+  initCreateForm() {
+    this.createForm = this.fb.group({
       name: ['', Validators.required ],
       appId: ['', Validators.required ],
       secret: ['', Validators.required ],
@@ -36,63 +41,65 @@ export class WechatAppComponent implements OnInit {
       comments: ''
     });
   }
+  initUpdateForm() {
+    this.updateForm = this.fb.group({
+      name: ['', Validators.required ],
+      appId: [{value: '', disabled: true}, Validators.required],
+      secret: ['', Validators.required ],
+      token: ['', Validators.required ],
+      aseKey: ['', Validators.required ],
+      accessPath: [{value: '', disabled: true}, Validators.required ],
+      comments: ''
+    });
+  }
   ngOnInit() {
     console.debug('WechatAppComponent init')
     this.settings = {
+      selectMode: 'multi',
       mode: 'external',
       hideHeader: false,
-      hideSubHeader: false,
+      hideSubHeader: true,
       noDataMessage: '没有数据',
       actions: {
         columnTitle: '操作',
         add: true,
         edit: true,
         delete: true,
-        position: 'left'
+        position: 'right'
       },
       add: {
-        addButtonContent: '增加',
+        addButtonContent: '<i class="btn btn-primary btn-sm glyphicon glyphicon-plus"></i>',
         createButtonContent: '保存',
         cancelButtonContent: '取消',
         confirmCreate: true
       },
       edit: {
-        editButtonContent: '编辑',
+        //editButtonContent: '<button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-pencil"></span>编辑</button>',
+
+        editButtonContent: '<i class="btn btn-warning btn-sm glyphicon glyphicon-pencil"></i>',
         saveButtonContent: '保存',
         cancelButtonContent: '取消',
         confirmSave: true,
       },
       delete:{
-        deleteButtonContent: '删除',
+        deleteButtonContent: '<i class="btn btn-danger btn-sm glyphicon glyphicon-remove"></i>',
         confirmDelete: true
       },
       columns: {
+        name: {
+          title: '公众号'
+        },
         appId: {
           title: 'appId'
         },
-        secret: {
-          title: 'secret'
-        },
-        token: {
-          title: 'token'
-        },
-        aseKey: {
-          title: 'aseKey'
-        },
         accessPath: {
-          title: 'accessPath'
+          title: '接入路径'
         },
         enableFlag: {
-          title: 'enableFlag'
-        },
-        name: {
-          title: 'name'
+          title: '状态'
         },
         comments: {
-          title: 'comments'
-        },
-        createTime: {
-          title: 'createTime'
+          title: '备注'
         }
       },
       pager:  {
@@ -117,12 +124,14 @@ export class WechatAppComponent implements OnInit {
   }
   onCreate(){
     console.debug('onCreate invoked')
+    this.createModal.show()
   }
   onCreateConfirm(){
     console.debug('onCreateConfirm invoked')
   }
   onEdit(){
     console.debug('onEdit invoked')
+    this.updateModal.show()
   }
   onEditConfirm(){
     console.debug('onEditConfirm invoked')
@@ -133,13 +142,34 @@ export class WechatAppComponent implements OnInit {
   onDeleteConfirm(){
     console.debug('onDeleteConfirm invoked')
   }
-  hideAddModal(formValue){
+  onRowSelect(event){
+    console.debug('onRowSelect invoked')
+    console.log(event)
+    console.log(this.isAllSelected)
+    // isSelected
+  }
+  hideCreateModal(formValue){
     if(!!formValue){
       this.createApp(formValue)
     }
-    this.addModal.hide()
+    this.createModal.hide()
+  }
+  hideUpdateModal(formValue){
+    if(!!formValue){
+      this.updateApp(formValue)
+    }
+    this.updateModal.hide()
   }
   createApp(wechatAppInfo){
+    this.wechatAppService.saveOrUpdateWechatApp(wechatAppInfo).subscribe(
+      ()=>{},
+      error=>{},
+      ()=>{
+        this.onSearch()
+      }
+    )
+  }
+  updateApp(wechatAppInfo){
     this.wechatAppService.saveOrUpdateWechatApp(wechatAppInfo).subscribe(
       ()=>{},
       error=>{},

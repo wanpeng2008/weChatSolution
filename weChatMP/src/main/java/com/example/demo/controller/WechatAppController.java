@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.WechatApp;
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.WechatAppVO;
 import com.example.demo.service.WechatAppService;
 import org.slf4j.Logger;
@@ -44,23 +45,23 @@ public class WechatAppController {
     }
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<WechatApp> add(@RequestBody WechatAppVO wechatAppVO){
+    public WechatApp add(@RequestBody WechatAppVO wechatAppVO){
         WechatApp wechatApp = new WechatApp();
         BeanUtils.copyProperties(wechatAppVO, wechatApp);
         wechatApp.setId(UUID.randomUUID());
         wechatApp.setCreateTime(new Date());
         wechatApp.setEnableFlag(true);
-        return new ResponseEntity<>(wechatAppService.save(wechatApp), HttpStatus.CREATED);
+        return wechatAppService.save(wechatApp);
     }
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
-    public ResponseEntity<WechatApp> update(@RequestBody WechatAppVO wechatAppVO){
+    public WechatApp update(@RequestBody WechatAppVO wechatAppVO){
         if(wechatAppVO.getId()==null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            throw new BadRequestException();
         }
         WechatApp wechatApp = this.wechatAppService.getById(wechatAppVO.getId());
         BeanUtils.copyProperties(wechatAppVO, wechatApp);
-        return new ResponseEntity<>(wechatAppService.save(wechatApp), HttpStatus.CREATED);
+        return wechatAppService.save(wechatApp);
     }
 }
 

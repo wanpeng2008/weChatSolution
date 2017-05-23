@@ -15,7 +15,6 @@ public class WechatApp {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    @JsonIgnore
     private UUID id;
     @Column(name = "APP_ID",nullable=false,unique=true)
     private String appId;
