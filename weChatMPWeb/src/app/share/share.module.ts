@@ -19,7 +19,8 @@ const COMPONENTS = [
     CommonModule
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+
   ],
   providers: [
     WechatAppService

@@ -33,7 +33,7 @@ public class WechatAppController {
 
     @GetMapping(value = "/{id}", produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public WechatApp getById(@PathVariable(value="id" ,required =true ) UUID id){
+    public WechatApp getById(@PathVariable(value="id") UUID id){
         return wechatAppService.getById(id);
     }
     @GetMapping(produces = "application/json;charset=UTF-8")
@@ -60,8 +60,14 @@ public class WechatAppController {
             throw new BadRequestException();
         }
         WechatApp wechatApp = this.wechatAppService.getById(wechatAppVO.getId());
-        BeanUtils.copyProperties(wechatAppVO, wechatApp);
+        BeanUtils.copyProperties(wechatAppVO, wechatApp,
+                new String[]{"id", "appId", "accessPath", "createTime"});
         return wechatAppService.save(wechatApp);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void delete(@PathVariable(value="id") UUID id){
+        wechatAppService.deleteById(id);
     }
 }
 

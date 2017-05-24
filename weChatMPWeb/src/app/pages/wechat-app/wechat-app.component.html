@@ -1,10 +1,11 @@
+<basic-example-button-view></basic-example-button-view>
 <p>
   wechat-app works!
 </p>
 <div class="">
-  <button type="button" class="btn btn-primary glyphicon glyphicon-plus" (click)="onCreate()">新增</button>
-  <button type="button" class="btn btn-info glyphicon glyphicon-pencil" (click)="onEdit()">编辑</button>
+  <button type="button" class="btn btn-success glyphicon glyphicon-plus" (click)="onCreate()">新增</button>
   <button type="button" class="btn btn-warning glyphicon glyphicon-stop">停用</button>
+  <button type="button" class="btn btn-primary glyphicon glyphicon-search" (click)="onSearch()">搜索</button>
 </div>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -13,12 +14,12 @@
       [source]="source"
       (create)="onCreate()"
       (createConfirm)="onCreateConfirm()"
-      (edit)="onEdit()"
+      (edit)="onEdit($event)"
       (editConfirm)="onEditConfirm()"
-      (delete)="onDelete()"
+      (delete)="onDelete($event)"
       (deleteConfirm)="onDeleteConfirm"
       (rowSelect)="onRowSelect($event)"
-      [isAllSelected]="isAllSelected"
+      #myTable
     ></ng2-smart-table>
 
     <div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -147,6 +148,8 @@
     </div>
   </div>
 </div>
+<p>selected: {{selectedWechatApps | json}}</p>
+<button></button>
 
 
 

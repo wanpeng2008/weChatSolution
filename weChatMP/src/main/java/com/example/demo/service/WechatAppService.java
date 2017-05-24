@@ -51,4 +51,8 @@ public class WechatAppService {
     public WechatApp save(WechatApp wechatApp) {
         return wechatAppRepository.save(wechatApp);
     }
+
+    public void deleteById(UUID id) {
+        wechatAppRepository.delete(id);
+    }
 }
