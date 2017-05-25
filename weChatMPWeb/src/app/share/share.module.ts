@@ -6,20 +6,25 @@ import { MainFrameComponent } from './components/main-frame/main-frame.component
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {WechatAppService} from "./services/wechat-app.service";
+import { StatusButtonComponent } from './components/cell-render/status-button/status-button.component';
+import {TabsModule} from "ng2-bootstrap";
 
 const COMPONENTS = [
   TopBarComponent,
   MainFrameComponent,
   SideBarComponent,
   ContentComponent,
-  FooterComponent
+  FooterComponent,
+  StatusButtonComponent,
 ]
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    TabsModule.forRoot(),
   ],
   declarations: [
     ...COMPONENTS,
+    StatusButtonComponent,
 
   ],
   providers: [
@@ -27,6 +32,9 @@ const COMPONENTS = [
   ],
   exports: [
     ...COMPONENTS
+  ],
+  entryComponents: [
+    StatusButtonComponent
   ]
 })
 export class ShareModule { }

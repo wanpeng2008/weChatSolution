@@ -4,11 +4,15 @@ import {PagesComponent} from "./pages.component";
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: 'app/pages/login/login.module#LoginModule'
+  },
+  {
     path: 'pages',
     component: PagesComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule' },
+      { path: '', redirectTo: 'wechatApp', pathMatch: 'full' },
+      { path: 'wechatApp', loadChildren: 'app/pages/wechat-app/wechat-app.module#WechatAppModule' }
     ]
   }
 ];

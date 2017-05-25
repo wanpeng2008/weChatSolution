@@ -5,8 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
-import {HomeModule} from "./pages/home/home.module";
 import {PagesModule} from "./pages/pages.module";
+import {ShareModule} from "./share/share.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import {PagesModule} from "./pages/pages.module";
     HttpModule,
     AppRoutingModule,
     PagesModule,
+    ShareModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
