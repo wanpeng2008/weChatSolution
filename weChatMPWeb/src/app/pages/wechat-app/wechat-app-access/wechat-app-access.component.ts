@@ -5,7 +5,6 @@ import {ModalDirective} from "ng2-bootstrap";
 import {Ng2SmartTableComponent} from "ng2-smart-table/ng2-smart-table.component";
 import {WechatAppService} from "../../../share/services/wechat-app.service";
 import {LocalDataSource} from "ng2-smart-table";
-import {CellRenderComponent} from "../cell-render/cell-render.component";
 import {Observable, Observer} from "rxjs";
 import {StatusButtonComponent} from "../../../share/components/cell-render/status-button/status-button.component";
 /* To do:
@@ -64,7 +63,7 @@ export class WechatAppAccessComponent implements OnInit {
     });
   }
   ngOnInit() {
-    console.debug('WechatAppComponent init')
+    console.debug('WechatAppAccessComponent init')
     let self = this;
     this.settings = {
       //selectMode: 'multi',

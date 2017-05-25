@@ -1,0 +1,7 @@
+.menu_tab{
+  width: 100%;
+  display: table;
+  border-radius: 4px;
+  table-layout: fixed;
+  background-color: white;
+}

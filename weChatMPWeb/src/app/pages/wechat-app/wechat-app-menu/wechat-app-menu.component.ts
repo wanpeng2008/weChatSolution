@@ -10,6 +10,7 @@ export class WechatAppMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.debug('WechatAppMenuComponent init')
   }
 
 }

@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import {WechatAppService} from "./services/wechat-app.service";
 import { StatusButtonComponent } from './components/cell-render/status-button/status-button.component';
 import {TabsModule} from "ng2-bootstrap";
+import {RouterModule} from "@angular/router";
 
 const COMPONENTS = [
   TopBarComponent,
@@ -20,6 +21,7 @@ const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     TabsModule.forRoot(),
   ],
   declarations: [
