@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
+import {TabViewModule} from "./tab-view/tab-view.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    TabViewModule,
   ],
   declarations: [PagesComponent]
 })
