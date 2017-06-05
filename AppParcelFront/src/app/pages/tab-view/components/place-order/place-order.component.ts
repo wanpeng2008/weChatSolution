@@ -1,14 +1,13 @@
-import {Component, OnInit, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-account-info-edit',
-  templateUrl: './account-info-edit.component.html',
-  styleUrls: ['./account-info-edit.component.css'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-place-order',
+  templateUrl: './place-order.component.html',
+  styleUrls: ['./place-order.component.css']
 })
-export class AccountInfoEditComponent implements OnInit {
+export class PlaceOrderComponent implements OnInit {
 
   @Output() updateSuccessEvent = new EventEmitter<any>()
   constructor(private router: Router) {
@@ -29,5 +28,4 @@ export class AccountInfoEditComponent implements OnInit {
     //alert('请求数据：' + JSON.stringify(this.res));
     this.updateSuccessEvent.emit()
   }
-
 }

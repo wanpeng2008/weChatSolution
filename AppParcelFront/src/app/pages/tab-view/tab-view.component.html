@@ -1,15 +1,10 @@
 
 <weui-tabbar>
   <weui-tab heading="下单"  [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'">
-    <article class="weui-article">
-      <h1>下单</h1>
-    </article>
+    <app-place-order></app-place-order>
   </weui-tab>
-  <weui-tab heading="我的订单" [badge]="'dot'" [icon]="'<img src=assets/images/svg/si-glyph-bullet-checked-list.svg>'" (select)="onSelect()">
-    <article class="weui-article">
-      <h1>我的订单</h1>
-      <p>Select Time: {{time}}</p>
-    </article>
+  <weui-tab heading="我的订单" [badge]="'dot'" [icon]="'<img src=assets/images/svg/si-glyph-bullet-checked-list.svg>'" >
+    <app-order-list></app-order-list>
   </weui-tab>
   <weui-tab heading="资费查询"  [icon]="'<img src=assets/images/svg/si-glyph-calculator-2.svg>'">
     <article class="weui-article">

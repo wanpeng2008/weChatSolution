@@ -1,3 +1,4 @@
-<p>
-  account-info works!
-</p>
+<p>{{status}}</p>
+<app-account-info-view *ngIf="!isEditStatus" (editEvent)="isEditStatus=true"></app-account-info-view>
+<app-account-info-edit *ngIf="isEditStatus" (updateSuccessEvent)="isEditStatus=false"></app-account-info-edit>
+<p>{{status}}</p>

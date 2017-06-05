@@ -1,3 +1,57 @@
-<p>
-  account-info-view works!
-</p>
+<Page [ngClass]="'preview'" [title]="'账户信息'" [subTitle]="'万鹏'" [spacing]="false">
+
+  <div class="weui-form-preview">
+    <div class="weui-form-preview__hd">
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">绑定手机</label>
+        <span class="weui-form-preview__value">电动打蛋机</span>
+      </div>
+    </div>
+    <div class="weui-form-preview__hd">
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">联系电话</label>
+        <span class="weui-form-preview__value">电动打蛋机</span>
+      </div>
+    </div>
+    <div class="weui-form-preview__hd">
+      <div class="weui-form-preview__item">
+        <label class="weui-form-preview__label">地址</label>
+        <span class="weui-form-preview__value">电动打蛋机</span>
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+      <div class="weui-cell__hd">
+        <label for="" class="weui-label">省</label>
+      </div>
+      <div class="weui-cell__bd">
+        <select class="weui-select" value="1" disabled>
+          <option value="1">浙江</option>
+        </select>
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+      <div class="weui-cell__hd">
+        <label for="" class="weui-label">市</label>
+      </div>
+      <div class="weui-cell__bd">
+        <select class="weui-select" value="1" disabled>
+          <option value="1">杭州</option>
+        </select>
+      </div>
+    </div>
+    <div class="weui-cell weui-cell_select weui-cell_select-after">
+      <div class="weui-cell__hd">
+        <label for="" class="weui-label">县</label>
+      </div>
+      <div class="weui-cell__bd">
+        <select class="weui-select" value="1" disabled>
+          <option value="1">杭州</option>
+        </select>
+      </div>
+    </div>
+    <div class="weui-form-preview__ft">
+      <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" (click)="onEdit()">编辑</button>
+    </div>
+  </div>
+
+</Page>
