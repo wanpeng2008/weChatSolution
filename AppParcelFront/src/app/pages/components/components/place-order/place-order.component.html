@@ -1,6 +1,75 @@
 <Page [ngClass]="'preview'" [title]="'下单'" [subTitle]="'请如实填写信息'" [spacing]="false">
 
   <form #f="ngForm" (ngSubmit)="onSave()">
+    <div class="weui-cells__title">包裹内容</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="内容和数量" rows="2" [(ngModel)]="res.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-cells__title">收件人信息</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
+                 weui-required>
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" [(ngModel)]="res.tel" name="tel" type="tel" placeholder="请输入号码" >
+        </div>
+      </div>
+      <div class="weui-cells">
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+          <div class="weui-cell__hd">
+            <label for="" class="weui-label">省</label>
+          </div>
+          <div class="weui-cell__bd">
+            <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
+              <option value="1">中国</option>
+              <option value="2">美国</option>
+              <option value="3">英国</option>
+            </select>
+          </div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+          <div class="weui-cell__hd">
+            <label for="" class="weui-label">市</label>
+          </div>
+          <div class="weui-cell__bd">
+            <select class="weui-select" name="city" [(ngModel)]="res.city" name="city">
+              <option value="1">中国</option>
+              <option value="2">美国</option>
+              <option value="3">英国</option>
+            </select>
+          </div>
+        </div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+          <div class="weui-cell__hd">
+            <label for="" class="weui-label">县</label>
+          </div>
+          <div class="weui-cell__bd">
+            <select class="weui-select" name="county" [(ngModel)]="res.county" name="county">
+              <option value="1">中国</option>
+              <option value="2">美国</option>
+              <option value="3">英国</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="寄达地址" rows="2" [(ngModel)]="res.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
+        </div>
+      </div>
+    </div>
+
     <div class="weui-cells__title">寄件人信息</div>
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell">
@@ -62,66 +131,7 @@
 
     </div>
 
-    <div class="weui-cells__title">收件人信息</div>
-    <div class="weui-cells weui-cells_form">
-      <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
-        <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
-                 weui-required>
-        </div>
-      </div>
-      <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
-        <div class="weui-cell__bd">
-          <input class="weui-input" [(ngModel)]="res.tel" name="tel" type="tel" placeholder="请输入号码" >
-        </div>
-      </div>
-      <div class="weui-cells">
-        <div class="weui-cell weui-cell_select weui-cell_select-after">
-          <div class="weui-cell__hd">
-            <label for="" class="weui-label">省</label>
-          </div>
-          <div class="weui-cell__bd">
-            <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
-            </select>
-          </div>
-        </div>
-        <div class="weui-cell weui-cell_select weui-cell_select-after">
-          <div class="weui-cell__hd">
-            <label for="" class="weui-label">市</label>
-          </div>
-          <div class="weui-cell__bd">
-            <select class="weui-select" name="city" [(ngModel)]="res.city" name="city">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
-            </select>
-          </div>
-        </div>
-        <div class="weui-cell weui-cell_select weui-cell_select-after">
-          <div class="weui-cell__hd">
-            <label for="" class="weui-label">县</label>
-          </div>
-          <div class="weui-cell__bd">
-            <select class="weui-select" name="county" [(ngModel)]="res.county" name="county">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="weui-cell">
-        <div class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="寄达地址" rows="2" [(ngModel)]="res.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
-        </div>
-      </div>
 
-    </div>
     <div class="weui-btn-area">
       <button class="weui-btn weui-btn_primary"
               [disabled]="!f.form.valid || !f.form.dirty"

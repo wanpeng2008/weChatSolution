@@ -9,7 +9,15 @@ export class OrderListComponent implements OnInit {
 
   constructor() { }
 
+  showOrderInfoFlag:boolean = false
   ngOnInit() {
+    console.debug('OrderListComponent init')
+  }
+  showOrderInfo(){
+    this.showOrderInfoFlag = true
+  }
+  showOrderList(){
+    this.showOrderInfoFlag = false
   }
 
 }

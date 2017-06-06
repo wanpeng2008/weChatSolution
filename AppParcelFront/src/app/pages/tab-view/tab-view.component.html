@@ -7,9 +7,7 @@
     <app-order-list></app-order-list>
   </weui-tab>
   <weui-tab heading="资费查询"  [icon]="'<img src=assets/images/svg/si-glyph-calculator-2.svg>'">
-    <article class="weui-article">
-      <h1>资费查询</h1>
-    </article>
+    <app-info-inquiry></app-info-inquiry>
   </weui-tab>
   <weui-tab heading="我的账户" [active]="'true'" [icon]="'<img src=assets/images/svg/si-glyph-person-2.svg>'" (select)="onSelect($event)">
     <app-account-info></app-account-info>

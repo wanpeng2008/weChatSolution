@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-order-info',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderInfoComponent implements OnInit {
 
+  @Output() backEvent = new EventEmitter<any>()
   constructor() { }
 
+  title=`
+    订单信息
+  `
   ngOnInit() {
+  }
+
+  back(){
+    this.backEvent.emit()
   }
 
 }

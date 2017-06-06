@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import {Component, Input, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'Page',
@@ -15,4 +15,9 @@ export class PageComponent {
   @Input() spacing: boolean = true;
   @Input() ftBottom: boolean = false;
   @Input() noBottom: boolean = false;
+  @Input() showBack: boolean = false;
+  @Output() backEvent = new EventEmitter<any>()
+  onBack(){
+    this.backEvent.emit()
+  }
 }

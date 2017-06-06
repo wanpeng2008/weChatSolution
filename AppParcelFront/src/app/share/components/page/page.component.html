@@ -1,3 +1,7 @@
+<div class="top-bar pull-left" *ngIf="showBack">
+  <button class="btn btn-link" (click)="onBack()"><img src="assets/images/svg/si-glyph-arrow-left.svg">返回</button>
+</div>
+
 <div class="page__hd">
   <h1 class="page__title" [innerHTML]="title"></h1>
   <p class="page__desc" [innerHTML]="subTitle"></p>

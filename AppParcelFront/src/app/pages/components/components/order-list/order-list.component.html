@@ -1,8 +1,8 @@
-<Page [ngClass]="'list'" [title]="'我的订单'" [subTitle]="'可下拉刷新'" [spacing]="false">
+<Page [ngClass]="'list'" *ngIf="!showOrderInfoFlag" [title]="'我的订单'" [subTitle]="'可下拉刷新'" [spacing]="false">
   <div class="weui-cells">
-    <a class="weui-cell weui-cell_access" href="javascript:;">
+    <div class="weui-cell weui-cell_access" (click)="showOrderInfo()">
       <div class="weui-cell__hd">
-        <img src="assets/images/svg/si-glyph-cubic.svg" style="width:40px;margin-right:10px;display:block">
+        <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
       <div class="weui-cell__bd">
         <strong>单号:1482</strong> <br>
@@ -10,10 +10,10 @@
         <small>内容:文件</small><br>
       </div>
       <div class="weui-cell__ft">已反馈</div>
-    </a>
-    <a class="weui-cell weui-cell_access" href="javascript:;">
+    </div>
+    <a class="weui-cell weui-cell_access" (click)="showOrderInfo()">
       <div class="weui-cell__hd">
-        <img src="assets/images/svg/si-glyph-cubic.svg" style="width:40px;margin-right:10px;display:block">
+        <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
       <div class="weui-cell__bd">
         <strong>单号:1482</strong> <br>
@@ -24,3 +24,8 @@
     </a>
   </div>
 </Page>
+<div *ngIf="showOrderInfoFlag">
+  <app-order-info (backEvent)="showOrderList()"></app-order-info>
+</div>
+
+
