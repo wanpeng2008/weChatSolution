@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-info-inquiry',
@@ -7,11 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoInquiryComponent implements OnInit {
 
+  @Input() title:string = ''
+  @Input() subTitle:string = '可下拉刷新'
+  @Input() InquiryList:string[] = []
   constructor() { }
 
+  currentView:string = 'list'
   ngOnInit() {
+    console.debug('InfoInquiryComponent init')
   }
-  res: any = {
-    agree: true
-  };
+  showItem(itemName){
+    this.currentView = itemName
+  }
+  showList(){
+    this.currentView = 'list'
+  }
+
 }

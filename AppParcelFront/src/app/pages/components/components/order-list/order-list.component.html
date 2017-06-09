@@ -1,6 +1,6 @@
-<Page [ngClass]="'list'" *ngIf="!showOrderInfoFlag" [title]="'我的订单'" [subTitle]="'可下拉刷新'" [spacing]="false">
+<Page [ngClass]="'list'" *ngIf="currentView == 'list'" [title]="title" [subTitle]="subTitle" [spacing]="false">
   <div class="weui-cells">
-    <div class="weui-cell weui-cell_access" (click)="showOrderInfo()">
+    <div class="weui-cell weui-cell_access" (click)="showItem('item')">
       <div class="weui-cell__hd">
         <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
@@ -11,7 +11,7 @@
       </div>
       <div class="weui-cell__ft">已反馈</div>
     </div>
-    <a class="weui-cell weui-cell_access" (click)="showOrderInfo()">
+    <a class="weui-cell weui-cell_access" (click)="showItem('item')">
       <div class="weui-cell__hd">
         <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
@@ -24,8 +24,8 @@
     </a>
   </div>
 </Page>
-<div *ngIf="showOrderInfoFlag">
-  <app-order-info (backEvent)="showOrderList()"></app-order-info>
+<div *ngIf="currentView == 'item'">
+  <app-order-info (backEvent)="showList()"></app-order-info>
 </div>
 
 

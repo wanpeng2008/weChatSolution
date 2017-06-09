@@ -1,27 +1,20 @@
 
-<Page [ngClass]="'preview'" [title]="title" [subTitle]="'已反馈'" [spacing]="false" [showBack]="'true'" (backEvent)="back()">
-  <div class="weui-cells__title">包裹内容</div>
-  <div class="weui-form-preview">
-    <div class="weui-form-preview__bd">
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">内容</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
-      </div>
-    </div>
-  </div>
+<Page [ngClass]="'preview'" [title]="title" [subTitle]="mailInfo.status" [spacing]="false" [showBack]="'true'" (backEvent)="back()">
+
+
 
   <div class="weui-cells__title">收件人信息</div>
   <div class="weui-form-preview">
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">姓名</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.sender.name}}</span>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">联系电话</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.sender.contact}}</span>
       </div>
     </div>
     <div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -57,7 +50,7 @@
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">地址</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.sender.address}}</span>
       </div>
     </div>
   </div>
@@ -67,13 +60,13 @@
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">姓名</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.receiver.name}}</span>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">联系电话</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.receiver.contact}}</span>
       </div>
     </div>
     <div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -109,7 +102,57 @@
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">地址</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{mailInfo.receiver.address}}</span>
+      </div>
+    </div>
+
+    <div class="weui-cells__title">包裹信息</div>
+    <div class="weui-form-preview">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">内容</label>
+          <span class="weui-form-preview__value">{{mailInfo.content}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview" *ngIf="mailInfo.mailId||''!==''">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">运单号</label>
+          <span class="weui-form-preview__value">{{mailInfo.mailId}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">创建时间</label>
+          <span class="weui-form-preview__value">{{mailInfo.createTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">派单时间</label>
+          <span class="weui-form-preview__value">{{mailInfo.assignTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">接单时间</label>
+          <span class="weui-form-preview__value">{{mailInfo.takenTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">完成时间</label>
+          <span class="weui-form-preview__value">{{mailInfo.finishTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+        </div>
       </div>
     </div>
   </div>

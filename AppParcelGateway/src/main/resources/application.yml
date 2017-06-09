@@ -1,0 +1,17 @@
+server:
+  port: 10101
+zuul:
+  routes:
+#    front:
+#      path: /wechat/front/**
+#      url: http://localhost:4200
+    api:
+      path: /wechat/api/**
+      url: http://localhost:8080/api
+    portal:
+      path: /wechat/portal/**
+      url: http://localhost:8080/portal
+
+logging:
+  level:
+    org.springframework.security: DEBUG

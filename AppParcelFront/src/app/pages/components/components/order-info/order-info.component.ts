@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-order-info',
@@ -7,7 +7,33 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class OrderInfoComponent implements OnInit {
 
-  @Output() backEvent = new EventEmitter<any>()
+  mailInfo:any = {
+    content: '鼠标',
+    status: '已反馈',
+    mailId: '111',
+    createTime: '1111',
+    assignTime:'111',
+    takenTime: '111',
+    finishTime: '111',
+    sender: {
+      name: '张三',
+      contact: '12233322221',
+      province: '',
+      city: '',
+      county:'',
+      address: '复兴路111'
+    },
+    receiver: {
+      name: '李四',
+      contact: '12233322221',
+      province: '',
+      city: '',
+      county:'',
+      address: '复兴路222'
+    },
+  }
+
+
   constructor() { }
 
   title=`
@@ -15,7 +41,7 @@ export class OrderInfoComponent implements OnInit {
   `
   ngOnInit() {
   }
-
+  @Output() backEvent = new EventEmitter<any>()
   back(){
     this.backEvent.emit()
   }

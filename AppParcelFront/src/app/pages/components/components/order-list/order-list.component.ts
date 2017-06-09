@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-order-list',
@@ -7,17 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
+  @Input() title:string = ''
+  @Input() subTitle:string = '可下拉刷新'
   constructor() { }
 
-  showOrderInfoFlag:boolean = false
+  currentView:string = 'list'
   ngOnInit() {
     console.debug('OrderListComponent init')
   }
-  showOrderInfo(){
-    this.showOrderInfoFlag = true
+  showItem(itemName){
+    this.currentView = itemName
   }
-  showOrderList(){
-    this.showOrderInfoFlag = false
+  showList(){
+    this.currentView = 'list'
   }
 
 }

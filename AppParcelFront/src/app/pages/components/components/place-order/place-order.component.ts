@@ -28,4 +28,5 @@ export class PlaceOrderComponent implements OnInit {
     //alert('请求数据：' + JSON.stringify(this.res));
     this.updateSuccessEvent.emit()
   }
+
 }

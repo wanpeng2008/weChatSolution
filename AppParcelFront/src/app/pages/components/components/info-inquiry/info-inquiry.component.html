@@ -1,58 +1,30 @@
-<Page [ngClass]="'preview'" [title]="'信息查询'" [subTitle]="" [spacing]="false">
-
-  <form #f="ngForm" (ngSubmit)="onSave()">
-    <div class="weui-cells__title">资费信息</div>
-    <div class="weui-cells">
-      <div class="weui-cell weui-cell_select weui-cell_select-after">
-        <div class="weui-cell__hd">
-          <label for="" class="weui-label">寄达省</label>
-        </div>
-        <div class="weui-cell__bd">
-          <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
-            <option value="1">中国</option>
-            <option value="2">美国</option>
-            <option value="3">英国</option>
-          </select>
-        </div>
+<Page [ngClass]="'list'" *ngIf="currentView == 'list'" [title]="title" [subTitle]="subTitle" [spacing]="false">
+  <div class="weui-cells">
+    <div class="weui-cell weui-cell_access" *ngIf="InquiryList.indexOf('price-inquiry')>-1"  (click)="showItem('price-inquiry')">
+      <div class="weui-cell__hd">
+        <img src="assets/images/svg/si-glyph-money-bag.svg">
       </div>
+      <div class="weui-cell__bd">
+        <strong>资费查询</strong> <br>
+      </div>
+      <div class="weui-cell__ft">进入</div>
     </div>
-
-    <div class="weui-cells weui-cells_form">
-      <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">重量(kg)</label></div>
-        <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
-                 weui-required>
-        </div>
+    <div class="weui-cell weui-cell_access"  *ngIf="InquiryList.indexOf('weight-inquiry')>-1" (click)="showItem('weight-inquiry')">
+      <div class="weui-cell__hd">
+        <img src="assets/images/svg/si-glyph-weight-kilograms.svg">
       </div>
-    </div>
-    <div class="weui-btn-area">
-      <button class="weui-btn weui-btn_primary"
-              [disabled]="!f.form.valid || !f.form.dirty"
-              [ngClass]="{'weui-btn_disabled': !f.form.valid || !f.form.dirty}">查询</button>
-    </div>
-  </form>
-
-  <div class="weui-form-preview">
-    <div class="weui-form-preview__hd">
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">查询结果</label>
+      <div class="weui-cell__bd">
+        <strong>重量稽核</strong> <br>
       </div>
-      </div>
-    <div class="weui-form-preview__bd">
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">首重价格/kg</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
-      </div>
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">续重价格/kg</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
-      </div>
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">估算价格(元)</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
-      </div>
+      <div class="weui-cell__ft">进入</div>
     </div>
   </div>
-
 </Page>
+<div *ngIf="currentView == 'price-inquiry'">
+  <app-price-inquiry (backEvent)="showList()"></app-price-inquiry>
+</div>
+<div *ngIf="currentView == 'weight-inquiry'">
+  <app-weight-inquiry (backEvent)="showList()"></app-weight-inquiry>
+</div>
+
+

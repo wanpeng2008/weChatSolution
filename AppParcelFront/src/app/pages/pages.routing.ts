@@ -4,15 +4,19 @@ import {PagesComponent} from "./pages.component";
 import {OrderInfoComponent} from "./components/components/order-info/order-info.component";
 
 const routes: Routes = [{
+  path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule'
+},{
   path: 'pages',
   component: PagesComponent,
   children: [{
-    path: '', redirectTo: 'tab-view', pathMatch: 'full'
+    path: '', redirectTo: 'customer-view', pathMatch: 'full'
   },{
-    path: 'tab-view', loadChildren: 'app/pages/tab-view/tab-view.module#TabViewModule'
+    path: 'customer-view', loadChildren: 'app/pages/customer-view/customer-view.module#CustomerViewModule'
+  },{
+    path: 'staff-view', loadChildren: 'app/pages/staff-view/staff-view.module#StaffViewModule'
   },/*{
-    path: 'order-info', component: OrderInfoComponent,
-  }*/]
+    path: 'tab-view', loadChildren: 'app/pages/tab-view/tab-view.module#TabViewModule'
+  },*/]
 }];
 
 export const PagesRouting: ModuleWithProviders = RouterModule.forChild(routes)

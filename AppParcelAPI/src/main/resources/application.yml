@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      dialect:  org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    platform: postgres
+    url:  jdbc:postgresql://localhost:5432/weixin
+    username: weixin
+    password: 123456
+    driverClassName: org.postgresql.Driver
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.github.binarywang.demo.wechat: DEBUG
+
+wechat:
+  portalPath: /portal/app001
+  mp:
+    appId: wx063a8d6f8bcc4dc8
+    secret: cfd5293de6b00362d128a8525cbbfbf1
+    token: ZjpostItZone9380
+    aesKey: KFzHEy5OUevazBn8EeJXc9DGTca1q83p07TgorZpwvk
+  menu:
+    reset: true

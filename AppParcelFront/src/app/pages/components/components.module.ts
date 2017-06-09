@@ -10,7 +10,10 @@ import {ShareModule} from "../../share/share.module";
 import {FormModule} from "ngx-weui";
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import {WeightInquiryComponent} from "./components/weight-inquiry/weight-inquiry.component";
+import {PriceInquiryComponent} from "./components/price-inquiry/price-inquiry.component";
 import {InfoInquiryComponent} from "./components/info-inquiry/info-inquiry.component";
+
 const COMPONENTS = [
   AccountInfoComponent,
   AccountInfoEditComponent,
@@ -19,6 +22,8 @@ const COMPONENTS = [
   OrderListComponent,
   OrderInfoComponent,
   InfoInquiryComponent,
+  PriceInquiryComponent,
+  WeightInquiryComponent,
 ]
 @NgModule({
   imports: [
