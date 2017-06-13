@@ -15,7 +15,7 @@ public class WechatSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/*.txt").permitAll()
+                .antMatchers("/auth/**").permitAll()
                 .antMatchers("/portal/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();

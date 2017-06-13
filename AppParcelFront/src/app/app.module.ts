@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {WeUiModule} from "ngx-weui";
 import {PagesModule} from "./pages/pages.module";
 import {AppRouting} from "./app.routing";
+import {ShareModule} from "./share/share.module";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {AppRouting} from "./app.routing";
     AppRouting,
     PagesModule,
     WeUiModule.forRoot(),
+    ShareModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

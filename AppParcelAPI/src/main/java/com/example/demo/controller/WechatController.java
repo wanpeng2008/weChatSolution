@@ -108,4 +108,9 @@ public class WechatController {
         return null;
     }
 
+    @GetMapping(path = "webauth",produces = "text/plain;charset=utf-8")
+    public String WebAuth(){
+        return "";
+    }
+
 }

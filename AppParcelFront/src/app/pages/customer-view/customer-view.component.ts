@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ConfigService} from "../../share/services/config.service";
+import {Http, RequestMethod, RequestOptions, Headers} from "@angular/http";
+import {unescape} from "querystring";
+import {AuthService} from "../../share/services/auth.service";
 
 @Component({
   selector: 'app-customer-view',
@@ -8,35 +12,23 @@ import {Router} from "@angular/router";
 })
 export class CustomerViewComponent implements OnInit {
 
-  storage = sessionStorage
-  constructor(private router:Router) { }
+  enableDebug = false
+
+  constructor(private route: ActivatedRoute, private configService: ConfigService, private http: Http, private authService: AuthService) { }
   ngOnInit() {
     console.debug('CustomerViewComponent init')
-    if(this.isLogin()){
+
+    if(this.authService.loggedIn()){
 
     }else{
-      var fromurl=location.href;
-      var url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=填你自已的appid哟&redirect_uri='+encodeURIComponent(fromurl)+'&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
-      this.login()
-      console.log(url)
-      location.href=url;
+      this.authService.loginOauth2()
+
     }
   }
-  time: number;
   onSelect($event) {
     //console.log($event)
-    if($event.heading==='我的账户'){
-      //console.log(this.router.url+'/account-info')
-      //this.router.navigateByUrl('/pages/customer-view/account-info/view')
-      //return false
-    }
-    this.time = new Date().getTime();
   }
-  isLogin(){
-    return (this.storage.getItem('token')!=null)
-  }
-  login(){
-    this.storage.setItem('token','abc')
-  }
+
+
 
 }

@@ -19,6 +19,7 @@ logging:
     com.github.binarywang.demo.wechat: DEBUG
 
 wechat:
+  authPath: /auth
   portalPath: /portal/app001
   mp:
     appId: wx063a8d6f8bcc4dc8

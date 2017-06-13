@@ -14,6 +14,8 @@ const routes: Routes = [{
     path: 'customer-view', loadChildren: 'app/pages/customer-view/customer-view.module#CustomerViewModule'
   },{
     path: 'staff-view', loadChildren: 'app/pages/staff-view/staff-view.module#StaffViewModule'
+  },{
+    path: 'page-not-found', loadChildren: 'app/pages/page-not-found/page-not-found.module#PageNotFoundModule'
   },/*{
     path: 'tab-view', loadChildren: 'app/pages/tab-view/tab-view.module#TabViewModule'
   },*/]

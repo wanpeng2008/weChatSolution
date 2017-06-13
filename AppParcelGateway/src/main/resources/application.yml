@@ -11,7 +11,9 @@ zuul:
     portal:
       path: /wechat/portal/**
       url: http://localhost:8080/portal
-
+    auth:
+      path: /wechat/auth/**
+      url: http://localhost:8080/auth
 logging:
   level:
     org.springframework.security: DEBUG
