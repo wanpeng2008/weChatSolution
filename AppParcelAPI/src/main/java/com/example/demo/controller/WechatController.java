@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.WechatApp;
+import com.example.demo.entity.primaryDB.WechatApp;
 import com.example.demo.service.WechatAppService;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpService;

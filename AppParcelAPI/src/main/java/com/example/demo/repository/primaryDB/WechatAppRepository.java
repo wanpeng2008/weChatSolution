@@ -1,8 +1,8 @@
-package com.example.demo.repository;
+package com.example.demo.repository.primaryDB;
 
 
 
-import com.example.demo.entity.WechatApp;
+import com.example.demo.entity.primaryDB.WechatApp;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

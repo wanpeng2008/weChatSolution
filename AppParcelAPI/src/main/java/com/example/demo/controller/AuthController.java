@@ -23,6 +23,9 @@ public class AuthController {
     @Autowired
     private WxMpService wxService;
 
+    /*
+    * 根据code获取openId并返回
+    * */
     @GetMapping(produces = "text/plain;charset=utf-8")
     public String login(@RequestParam(name = "code") String code) {
         try {

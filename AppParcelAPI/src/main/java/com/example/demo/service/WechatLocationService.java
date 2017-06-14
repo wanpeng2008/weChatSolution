@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 
-import com.example.demo.entity.WechatLocation;
-import com.example.demo.repository.WechatLocationRepository;
+import com.example.demo.entity.primaryDB.WechatLocation;
+import com.example.demo.repository.primaryDB.WechatLocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

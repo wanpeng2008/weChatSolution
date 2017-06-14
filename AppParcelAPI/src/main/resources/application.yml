@@ -2,17 +2,33 @@ server:
   port: 8080
 spring:
   jpa:
-    database: POSTGRESQL
+#    database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create
-      dialect:  org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    platform: postgres
-    url:  jdbc:postgresql://localhost:5432/weixin
-    username: weixin
-    password: 123456
-    driverClassName: org.postgresql.Driver
+      ddl-auto: update
+#      dialect:  org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    platform: postgres
+#    url:  jdbc:postgresql://localhost:5432/weixin
+#    username: weixin
+#    password: 123456
+#    driverClassName: org.postgresql.Driver
+multi-datasource:
+  primary:
+    datasource:
+      platform: postgres
+      url:  jdbc:postgresql://localhost:5432/weixin
+      username: weixin
+      password: 123456
+      driverClassName: org.postgresql.Driver
+  secondary:
+    datasource:
+      platform: oracle
+      url:  jdbc:oracle:thin:@10.143.7.52:1521:orabatch
+      username: dbrw_nmjk
+      password: Jstjb'sApp6514
+      driverClassName: oracle.jdbc.OracleDriver
+
 logging:
   level:
     org.springframework.web: DEBUG
@@ -21,6 +37,11 @@ logging:
 wechat:
   authPath: /auth
   portalPath: /portal/app001
+  userPath: /api/user
+  orderPath: /api/order
+  inqueryPath:
+    price:  /api/query/price
+    weight: /api/query/weight
   mp:
     appId: wx063a8d6f8bcc4dc8
     secret: cfd5293de6b00362d128a8525cbbfbf1

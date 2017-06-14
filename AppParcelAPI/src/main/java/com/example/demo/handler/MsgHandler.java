@@ -2,7 +2,7 @@ package com.example.demo.handler;
 
 
 import com.example.demo.builder.TextBuilder;
-import com.example.demo.entity.WechatMsg;
+import com.example.demo.entity.primaryDB.WechatMsg;
 import com.example.demo.service.WechatMsgService;
 import com.example.demo.utils.JsonUtils;
 import me.chanjar.weixin.common.api.WxConsts;

@@ -2,7 +2,7 @@ package com.example.demo.handler;
 
 
 import com.example.demo.builder.TextBuilder;
-import com.example.demo.entity.WechatUser;
+import com.example.demo.entity.primaryDB.WechatUser;
 import com.example.demo.service.WechatUserService;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;

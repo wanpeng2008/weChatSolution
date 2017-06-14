@@ -1,7 +1,7 @@
 package com.example.demo.handler;
 
 import com.example.demo.builder.TextBuilder;
-import com.example.demo.entity.WechatLocation;
+import com.example.demo.entity.primaryDB.WechatLocation;
 import com.example.demo.service.WechatLocationService;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.session.WxSessionManager;
