@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, EventEmitter, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {OrderService} from "../../../../share/services/order.service";
@@ -9,7 +9,7 @@ import {OrgService} from "../../../../share/services/org.service";
   templateUrl: './place-order.component.html',
   styleUrls: ['./place-order.component.css']
 })
-export class PlaceOrderComponent implements OnInit {
+export class PlaceOrderComponent implements OnInit, OnChanges {
 
   fromProvinceList:object[] = []
   fromCityList: object[] = []
@@ -20,82 +20,90 @@ export class PlaceOrderComponent implements OnInit {
   toCountyList: object[] = []
 
   @Input() accountInfo: AccountInfo
-  res: OrderInfo
+  res: OrderInfo = <OrderInfo>{}
   constructor(private orgService:OrgService, private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.res.customerName = this.accountInfo.name
-    this.res.customerOpenid = this.accountInfo.openId
-    this.res.customerMobile = this.accountInfo.mobile
-    this.res.province = this.accountInfo.province
-    this.res.city = this.accountInfo.city
-    this.res.county = this.accountInfo.county
-    this.res.address = this.accountInfo.address
-
     this.orgService.getProvinceList().subscribe(
       provinceList => {
         this.fromProvinceList = provinceList
-        if(this.accountInfo.province){
-          this.provinceSelected(this.accountInfo.province)
+        if(this.res.province){
+          this.fromProvinceSelected(this.res.province)
         }
-        if(this.accountInfo.city){
-          this.citySelected(this.accountInfo.city)
+        if(this.res.city){
+          this.fromCitySelected(this.res.city)
         }
 
-        this.provinceList = provinceList
-        if(this.accountInfo.province){
-          this.provinceSelected(this.accountInfo.province)
+        this.toProvinceList = provinceList
+        if(this.res.customer2Province){
+          this.toProvinceSelected(this.res.customer2Province)
         }
-        if(this.accountInfo.city){
-          this.citySelected(this.accountInfo.city)
+        if(this.res.customer2City){
+          this.toCitySelected(this.res.customer2City)
         }
       }
     )
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    let currentValue = changes['accountInfo'].currentValue
+    if(currentValue){
+      this.res.customerName = currentValue.name
+      this.res.customerOpenid = currentValue.openId
+      this.res.customerMobile = currentValue.mobile
+      this.res.province = currentValue.province
+      this.res.city = currentValue.city
+      this.res.county = currentValue.county
+      this.res.address = currentValue.address
+      if(this.res.province){
+        this.fromProvinceSelected(this.res.province)
+      }
+      if(this.res.city){
+        this.fromCitySelected(this.res.city)
+      }
+    }
+  }
 
   fromProvinceSelected(province){
-    this.accountInfo.province = province
-    this.orgService.getCityList(this.accountInfo.province).subscribe(
-      cityList => this.cityList = cityList
+    this.res.province = province
+    this.orgService.getCityList(province).subscribe(
+      cityList => this.fromCityList = cityList
     )
   }
   fromCitySelected(city){
-    this.accountInfo.city = city
-    this.orgService.getCountyList(this.accountInfo.city).subscribe(
-      county => this.countyList = county
+    this.res.city = city
+    this.orgService.getCountyList(city).subscribe(
+      county => this.fromCountyList = county
     )
   }
   fromCountySelected($event){
-    this.accountInfo.county = $event
+    this.res.county = $event
   }
 
-
   toProvinceSelected(province){
-    this.accountInfo.province = province
-    this.orgService.getCityList(this.accountInfo.province).subscribe(
-      cityList => this.cityList = cityList
+    this.res.customer2Province = province
+    this.orgService.getCityList(province).subscribe(
+      cityList => this.toCityList = cityList
     )
   }
   toCitySelected(city){
-    this.accountInfo.city = city
-    this.orgService.getCountyList(this.accountInfo.city).subscribe(
-      county => this.countyList = county
+    this.res.customer2City = city
+    this.orgService.getCountyList(city).subscribe(
+      county => this.toCountyList = county
     )
   }
   toCountySelected($event){
-    this.accountInfo.county = $event
+    this.res.customer2County = $event
   }
 
-
-
-  onSendCode(): Observable<boolean> {
-    return Observable.timer(1000).map((v, i) => { return true; });
-  }
 
   onSave() {
-
+    this.orderService.save(this.res).subscribe(
+      res => {
+        alert('下单成功')
+      }
+    )
   }
 
 }
