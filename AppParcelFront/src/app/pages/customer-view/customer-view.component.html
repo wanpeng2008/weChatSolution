@@ -1,7 +1,7 @@
 
 <weui-tabbar>
-  <weui-tab heading="下单"  [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'">
-    <app-place-order></app-place-order>
+  <weui-tab heading="下单" [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'">
+    <app-place-order [accountInfo]="accountInfo" ></app-place-order>
   </weui-tab>
   <weui-tab heading="我的订单" [badge]="'dot'" [icon]="'<img src=assets/images/svg/si-glyph-bullet-checked-list.svg>'" >
     <app-order-list></app-order-list>
@@ -10,7 +10,7 @@
     <app-info-inquiry [title]="'信息查询'" [InquiryList]="['price-inquiry']" ></app-info-inquiry>
   </weui-tab>
   <weui-tab heading="我的账户" [active]="'true'" [icon]="'<img src=assets/images/svg/si-glyph-person-2.svg>'" (select)="onSelect($event)">
-    <app-account-info></app-account-info>
+    <app-account-info [accountInfo]="accountInfo"></app-account-info>
   </weui-tab>
 </weui-tabbar>
 

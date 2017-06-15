@@ -21,24 +21,20 @@ public class CustomerController {
     CustomerVO get(@PathVariable String openId){
         Customer customer = this.customerService.getByOpenId(openId);
         CustomerVO result = new CustomerVO();
-        BeanUtils.copyProperties(customer, result);
+        if(customer!=null) {
+            BeanUtils.copyProperties(customer, result);
+        }
         return result;
     }
     @PostMapping(produces = "application/json;charset=utf-8")
     @ResponseBody
-    CustomerVO saveInsert(@RequestBody CustomerVO customerVO){
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(customerVO, customer);
-        return this.save(customer);
-    }
-    @PostMapping(value = "/{openId}", produces = "application/json;charset=utf-8")
-    @ResponseBody
-    CustomerVO saveUpdate(@PathVariable String openId, @RequestBody CustomerVO customerVO){
+    CustomerVO save(@RequestBody CustomerVO customerVO){
+        String openId = customerVO.getOpenId();
         Customer customer = this.customerService.getByOpenId(openId);
+        if(customer == null){
+            customer = new Customer();
+        }
         BeanUtils.copyProperties(customerVO, customer);
-        return this.save(customer);
-    }
-    private CustomerVO save(Customer customer){
         Customer savedCustomer = this.customerService.save(customer);
         CustomerVO result = new CustomerVO();
         BeanUtils.copyProperties(savedCustomer, result);

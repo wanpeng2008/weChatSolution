@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {ConfigService} from "./config.service";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
@@ -11,10 +12,14 @@ export class AuthService {
   storage = window.sessionStorage
 
   public loggedIn(): boolean {
-    return ('' || this.storage.getItem('openId')) !== ''
+    return this.storage.getItem('openId') != null
   }
 
   loginOauth2() {
+    if(environment.local){
+      this.storage.setItem('openId', 'myOpenId')
+      return
+    }
     let code = this.storage.getItem('code')
     if (code) {
       this.http.get('/wechat/auth?code=' + code).map(res => res.json()).subscribe(
@@ -38,4 +43,8 @@ export class AuthService {
     location.href = url;
   }
 
+  getUserInfo() {
+    let openId = this.storage.getItem('openId')
+    return this.http.get('/api/user/'+openId).map(res => res.json())
+  }
 }

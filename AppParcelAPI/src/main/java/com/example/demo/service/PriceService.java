@@ -15,6 +15,6 @@ public class PriceService {
     private PriceRepository priceRepository;
     public Price getByOrgcCode(String orgCode) {
         String province = orgCode;
-        return this.priceRepository.findByProvice(province);
+        return this.priceRepository.findByProvince(province);
     }
 }

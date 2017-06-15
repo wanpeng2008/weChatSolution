@@ -1,0 +1,449 @@
+[
+  {
+    "code":"31000100",
+    "name": "浙江",
+    "children":[
+      {
+        "code":"31002100",
+        "name": "杭州",
+        "children":[
+          {
+            "code":"31006100",
+            "name": "杭州",
+            "children":[]
+          },{
+            "code":"31116100",
+            "name": "余杭",
+            "children":[]
+          },{
+            "code":"31126100",
+            "name": "萧山",
+            "children":[]
+          },{
+            "code":"31136100",
+            "name": "临安",
+            "children":[]
+          },{
+            "code":"31146100",
+            "name": "富阳",
+            "children":[]
+          },{
+            "code":"31156100",
+            "name": "桐庐",
+            "children":[]
+          },{
+            "code":"31166100",
+            "name": "建德",
+            "children":[]
+          },{
+            "code":"31176100",
+            "name": "淳安",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31502100",
+        "name": "宁波",
+        "children":[
+          {
+            "code":"31506100",
+            "name": "宁波",
+            "children":[]
+          },
+          {
+            "code":"31526100",
+            "name": "镇海",
+            "children":[]
+          },
+          {
+            "code":"31536100",
+            "name": "慈溪",
+            "children":[]
+          },
+          {
+            "code":"31546100",
+            "name": "余姚",
+            "children":[]
+          },
+          {
+            "code":"31556100",
+            "name": "奉化",
+            "children":[]
+          },
+          {
+            "code":"31566100",
+            "name": "宁海",
+            "children":[]
+          },
+          {
+            "code":"31576100",
+            "name": "象山",
+            "children":[]
+          },
+          {
+            "code":"31586100",
+            "name": "北仑",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"32502100",
+        "name": "温州",
+        "children":[
+          {
+            "code":"32505100",
+            "name": "温州",
+            "children":[]
+          },
+          {
+            "code":"32516100",
+            "name": "永嘉",
+            "children":[]
+          },
+          {
+            "code":"32526100",
+            "name": "瑞安",
+            "children":[]
+          },
+          {
+            "code":"32536100",
+            "name": "文成",
+            "children":[]
+          },      
+          {
+            "code":"32546100",
+            "name": "平阳",
+            "children":[]
+          },
+          {
+            "code":"32556100",
+            "name": "泰顺",
+            "children":[]
+          },
+          {
+            "code":"32566100",
+            "name": "乐清",
+            "children":[]
+          },
+          {
+            "code":"32576100",
+            "name": "洞头",
+            "children":[]
+          },
+          {
+            "code":"32586100",
+            "name": "苍南",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31402100",
+        "name": "嘉兴",
+        "children":[
+          {
+            "code":"31406100",
+            "name": "嘉兴",
+            "children":[]
+          },
+          {
+            "code":"31416100",
+            "name": "嘉善",
+            "children":[]
+          },
+          {
+            "code":"31426100",
+            "name": "平湖",
+            "children":[]
+          },
+          {
+            "code":"31436100",
+            "name": "海盐",
+            "children":[]
+          },
+          {
+            "code":"31446100",
+            "name": "海宁",
+            "children":[]
+          },
+          {
+            "code":"31456100",
+            "name": "桐乡",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31302100",
+        "name": "湖州",
+        "children":[
+          {
+            "code":"31303300",
+            "name": "湖州",
+            "children":[]
+          },
+          {
+            "code":"31316100",
+            "name": "长兴",
+            "children":[]
+          },
+          {
+            "code":"31326100",
+            "name": "德清",
+            "children":[]
+          },
+          {
+            "code":"31336100",
+            "name": "安吉",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31202100",
+        "name": "绍兴",
+        "children":[
+          {
+            "code":"31206100",
+            "name": "绍兴",
+            "children":[]
+          },{
+            "code":"31186100",
+            "name": "诸暨",
+            "children":[]
+          },{
+            "code":"31236100",
+            "name": "上虞",
+            "children":[]
+          },{
+            "code":"31246100",
+            "name": "嵊州",
+            "children":[]
+          },{
+            "code":"31256100",
+            "name": "新昌",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"32102100",
+        "name": "金华",
+        "children":[
+          {
+            "code":"32106100",
+            "name": "金华",
+            "children":[]
+          },
+          {
+            "code":"32116100",
+            "name": "兰溪",
+            "children":[]
+          },
+          {
+            "code":"32126100",
+            "name": "武义",
+            "children":[]
+          },
+          {
+            "code":"32136100",
+            "name": "永康",
+            "children":[]
+          },
+          {
+            "code":"32206100",
+            "name": "义乌",
+            "children":[]
+          },
+          {
+            "code":"32216100",
+            "name": "东阳",
+            "children":[]
+          },
+          {
+            "code":"32226100",
+            "name": "浦江",
+            "children":[]
+          },
+          {
+            "code":"32236100",
+            "name": "磐安",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"32402100",
+        "name": "衢州",
+        "children":[
+          {
+            "code":"32406100",
+            "name": "衢州",
+            "children":[]
+          },
+          {
+            "code":"32416100",
+            "name": "江山",
+            "children":[]
+          },
+          {
+            "code":"32426100",
+            "name": "常山",
+            "children":[]
+          },
+          {
+            "code":"32436100",
+            "name": "开化",
+            "children":[]
+          },
+          {
+            "code":"32446100",
+            "name": "龙游",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"32302100",
+        "name": "丽水",
+        "children":[
+          {
+            "code":"32306100",
+            "name": "丽水",
+            "children":[]
+          },
+          {
+            "code":"32146100",
+            "name": "缙云",
+            "children":[]
+          },
+          {
+            "code":"32336100",
+            "name": "遂昌",
+            "children":[]
+          },
+          {
+            "code":"32346100",
+            "name": "松阳",
+            "children":[]
+          },
+          {
+            "code":"32356100",
+            "name": "景宁",
+            "children":[]
+          },
+          {
+            "code":"32366100",
+            "name": "云和",
+            "children":[]
+          },
+          {
+            "code":"32376100",
+            "name": "龙泉",
+            "children":[]
+          },
+          {
+            "code":"32386100",
+            "name": "庆元",
+            "children":[]
+          },
+          {
+            "code":"32396100",
+            "name": "青田",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31802100",
+        "name": "台州",
+        "children":[
+          {
+            "code":"31806000",
+            "name": "台州",
+            "children":[]
+          },
+          {
+            "code":"31706100",
+            "name": "临海",
+            "children":[]
+          },
+          {
+            "code":"31716100",
+            "name": "三门",
+            "children":[]
+          },
+          {
+            "code":"31726100",
+            "name": "天台",
+            "children":[]
+          },
+          {
+            "code":"31736100",
+            "name": "仙居",
+            "children":[]
+          },
+          {
+            "code":"31756100",
+            "name": "温岭",
+            "children":[]
+          },
+          {
+            "code":"31766100",
+            "name": "玉环",
+            "children":[]
+          }
+        ]
+      },
+      {
+        "code":"31602100",
+        "name": "舟山",
+        "children":[
+          {
+            "code":"31606100",
+            "name": "舟山",
+            "children":[]
+          },
+          {
+            "code":"20246100",
+            "name": "嵊泗",
+            "children":[]
+          },
+          {
+            "code":"31616100",
+            "name": "普陀",
+            "children":[]
+          },
+          {
+            "code":"31626100",
+            "name": "岱山",
+            "children":[]
+          }
+        ]
+      }
+    ]
+  }
+]
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+

@@ -23,11 +23,18 @@ multi-datasource:
       driverClassName: org.postgresql.Driver
   secondary:
     datasource:
-      platform: oracle
-      url:  jdbc:oracle:thin:@10.143.7.52:1521:orabatch
-      username: dbrw_nmjk
-      password: Jstjb'sApp6514
-      driverClassName: oracle.jdbc.OracleDriver
+      platform: postgres
+      url:  jdbc:postgresql://localhost:5432/weixin
+      username: weixin
+      password: 123456
+      driverClassName: org.postgresql.Driver
+#  secondary:
+#    datasource:
+#      platform: oracle
+#      url:  jdbc:oracle:thin:@10.143.7.52:1521:orabatch
+#      username: dbrw_nmjk
+#      password: Jstjb'sApp6514
+#      driverClassName: oracle.jdbc.OracleDriver
 
 logging:
   level:

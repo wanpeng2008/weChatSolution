@@ -4,19 +4,19 @@
     <div class="weui-form-preview__hd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">绑定手机</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{accountInfo.mobile}}</span>
       </div>
     </div>
     <div class="weui-form-preview__hd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">联系电话</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{accountInfo.tel}}</span>
       </div>
     </div>
     <div class="weui-form-preview__hd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">地址</label>
-        <span class="weui-form-preview__value">电动打蛋机</span>
+        <span class="weui-form-preview__value">{{accountInfo.address}}</span>
       </div>
     </div>
     <div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -24,8 +24,8 @@
         <label for="" class="weui-label">省</label>
       </div>
       <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">浙江</option>
+        <select class="weui-select" [ngModel]="accountInfo.province" disabled>
+          <option *ngFor="let item of provinceList" [value]="item['code']">{{item['name']}}</option>
         </select>
       </div>
     </div>
@@ -34,8 +34,8 @@
         <label for="" class="weui-label">市</label>
       </div>
       <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
+        <select class="weui-select" [ngModel]="accountInfo.city" disabled>
+          <option *ngFor="let item of cityList" [value]="item['code']">{{item['name']}}</option>
         </select>
       </div>
     </div>
@@ -44,8 +44,8 @@
         <label for="" class="weui-label">县</label>
       </div>
       <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
+        <select class="weui-select" [ngModel]="accountInfo.county" disabled>
+          <option *ngFor="let item of countyList" [value]="item['code']">{{item['name']}}</option>
         </select>
       </div>
     </div>
@@ -53,5 +53,5 @@
       <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" (click)="onEdit()">编辑</button>
     </div>
   </div>
-
+  <p>{{accountInfo | json}}</p>
 </Page>

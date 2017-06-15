@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    function getCode() {
+      //return 'o00SnjqQYKWDDNpEccLV1TGmp-40';
+      var reg = new RegExp("(^|&)code=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) {
+        return unescape(r[2]);
+      }
+      return null;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    function login(url) {
+      xmlhttp.onreadystatechange = state_Change;
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send(null);
+    }
+    function state_Change() {
+      if (xmlhttp.readyState == 4) {// 4 = "loaded"
+        if (xmlhttp.status == 200) {// 200 = OK
+          // ...our code here...
+          var openId = xmlhttp.responseText
+          window.sessionStorage.setItem('openId', openId)
+          window.location.href = window.sessionStorage.getItem('url_waiting_auth')
+
+        }
+        else {
+          alert("Problem retrieving XML data");
+        }
+      }
+    }
+    var loginUrl = '/wechat/auth?code=' + getCode()
+    login(loginUrl)
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

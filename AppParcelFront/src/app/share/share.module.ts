@@ -5,6 +5,8 @@ import { ChecklistDirective } from './directives/checklist.directive';
 import {ConfigService} from "./services/config.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {AuthService} from "./services/auth.service";
+import {OrderService} from "./services/order.service";
+import {UserService} from "./services/user.service";
 
 const COMPONENTS =[PageComponent]
 const DIRECTIVES =[ChecklistDirective]
@@ -12,6 +14,8 @@ const SERVICES = [
   ConfigService,
   AuthService,
   AuthGuardService,
+  OrderService,
+  UserService,
 ]
 @NgModule({
   imports: [

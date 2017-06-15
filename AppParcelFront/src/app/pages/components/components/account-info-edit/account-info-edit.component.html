@@ -5,7 +5,7 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
+          <input class="weui-input" type="tel" [(ngModel)]="accountInfo.name" name="name" placeholder="请输入姓名"
                   weui-required>
         </div>
       </div>
@@ -14,7 +14,7 @@
           <label class="weui-label">手机</label>
         </div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.mobile" name="mobile" placeholder="请输入手机号"
+          <input class="weui-input" type="tel" [(ngModel)]="accountInfo.mobile" name="mobile" placeholder="请输入手机号"
                  weui-required>
         </div>
         <div class="weui-cell__ft">
@@ -28,13 +28,13 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" [(ngModel)]="res.vcode" name="vcode" type="number" placeholder="请输入验证码" weui-required>
+          <input class="weui-input" [(ngModel)]="accountInfo.vcode" name="vcode" type="text" placeholder="请输入验证码" weui-required>
         </div>
       </div>
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" [(ngModel)]="res.tel" name="tel" type="tel" placeholder="请输入号码" >
+          <input class="weui-input" [(ngModel)]="accountInfo.tel" name="tel" type="tel" placeholder="请输入号码" >
         </div>
       </div>
     </div>
@@ -47,10 +47,8 @@
             <label for="" class="weui-label">省</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
+            <select class="weui-select" name="province" [ngModel]="accountInfo.province" (ngModelChange)="provinceSelected($event)" name="province">
+              <option *ngFor="let item of provinceList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>
         </div>
@@ -59,10 +57,8 @@
             <label for="" class="weui-label">市</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="city" [(ngModel)]="res.city" name="city">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
+            <select class="weui-select" name="city" [(ngModel)]="accountInfo.city" (ngModelChange)="citySelected($event)" name="city">
+              <option *ngFor="let item of cityList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>
         </div>
@@ -71,18 +67,15 @@
             <label for="" class="weui-label">县</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="county" [(ngModel)]="res.county" name="county">
-              <option value="1">中国</option>
-              <option value="2">美国</option>
-              <option value="3">英国</option>
+            <select class="weui-select" name="county" [(ngModel)]="accountInfo.county" (ngModelChange)="countySelected($event)" name="county">
+              <option *ngFor="let item of countyList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>
         </div>
       </div>
       <div class="weui-cell">
         <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入详细地址" rows="2" [(ngModel)]="res.address" name="address"
-                              weui-textarea weui-cn="2" maxlength="100"></textarea>
+          <textarea class="weui-textarea" placeholder="请输入详细地址" rows="2" [(ngModel)]="accountInfo.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
         </div>
       </div>
 
@@ -90,7 +83,7 @@
 
 
     <label for="weuiAgree" class="weui-agree">
-      <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox" [(ngModel)]="res.agree" name="agree">
+      <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox" [(ngModel)]="agree" name="agree">
       <span class="weui-agree__text">
                 阅读并同意<a href="javascript:void(0);">《相关条款》</a>
             </span>
@@ -101,5 +94,5 @@
               [ngClass]="{'weui-btn_disabled': !f.form.valid || !f.form.dirty}">确定</button>
     </div>
   </form>
-
+  <p>{{accountInfo | json}}</p>
 </Page>

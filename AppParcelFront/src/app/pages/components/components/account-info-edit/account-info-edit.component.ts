@@ -1,6 +1,10 @@
-import {Component, OnInit, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
+import {
+  Component, OnInit, ViewEncapsulation, EventEmitter, Output, OnChanges, SimpleChanges,
+  Input
+} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
+import {OrgService} from "../../../../share/services/org.service";
 
 @Component({
   selector: 'app-account-info-edit',
@@ -10,15 +14,29 @@ import {Observable} from "rxjs";
 })
 export class AccountInfoEditComponent implements OnInit {
 
-  @Output() updateSuccessEvent = new EventEmitter<any>()
-  constructor(private router: Router) {
+
+  provinceList:object[] = []
+  cityList: object[] = []
+  countyList: object[] = []
+  agree:boolean = true
+  @Input() accountInfo
+  @Output() saveEvent = new EventEmitter<any>()
+  constructor(private orgService: OrgService) {
   }
 
   ngOnInit() {
+    this.orgService.getProvinceList().subscribe(
+      provinceList => {
+        this.provinceList = provinceList
+        if(this.accountInfo.province){
+          this.provinceSelected(this.accountInfo.province)
+        }
+        if(this.accountInfo.city){
+          this.citySelected(this.accountInfo.city)
+        }
+      }
+    )
   }
-  res: any = {
-    agree: true
-  };
 
 
   onSendCode(): Observable<boolean> {
@@ -27,7 +45,21 @@ export class AccountInfoEditComponent implements OnInit {
 
   onSave() {
     //alert('请求数据：' + JSON.stringify(this.res));
-    this.updateSuccessEvent.emit()
+    this.saveEvent.emit(this.accountInfo)
   }
-
+  provinceSelected(province){
+    this.accountInfo.province = province
+    this.orgService.getCityList(this.accountInfo.province).subscribe(
+      cityList => this.cityList = cityList
+    )
+  }
+  citySelected(city){
+    this.accountInfo.city = city
+    this.orgService.getCountyList(this.accountInfo.city).subscribe(
+      county => this.countyList = county
+    )
+  }
+  countySelected($event){
+    this.accountInfo.county = $event
+  }
 }

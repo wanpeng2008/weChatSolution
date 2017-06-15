@@ -13,9 +13,7 @@ public class WechatOrg implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="WX_ORG_ORGID_GENERATOR")
 	@Column(name="ID")
 	private Long id;
-	
-	 
-	
+
 	@Column(name="CITY")
 	private String city;
 	

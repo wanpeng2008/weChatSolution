@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Created by pengwan on 2017/6/14.
  */
 public interface PriceRepository extends JpaRepository<Price, Long> {
-    Price findByProvice(String province);
+    Price findByProvince(String province);
 }

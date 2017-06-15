@@ -21,14 +21,23 @@ public class Order implements Serializable {
 	
 	 
 	@Column(name="PROVINCE")
-	private String province;
+	private String customer2province;
 	
 	@Column(name="CITY")
-	private String city;
+	private String customer2city;
 	
 	@Column(name="COUNTY")
-	private String county;	
-	
+	private String customer2county;
+
+	@Column(name="CUSTOMER2_PROVINCE")
+	private String province;
+
+	@Column(name="CUSTOMER2_CITY")
+	private String city;
+
+	@Column(name="CUSTOMER2_COUNTY")
+	private String county;
+
 	@Column(name="CUSTOMER_ID")
 	private Long customerId;
 	
@@ -394,6 +403,29 @@ public class Order implements Serializable {
 
 	public void setAlert(Integer alert) {
 		this.alert = alert;
-	} 
+	}
 
+	public String getCustomer2province() {
+		return customer2province;
+	}
+
+	public void setCustomer2province(String customer2province) {
+		this.customer2province = customer2province;
+	}
+
+	public String getCustomer2city() {
+		return customer2city;
+	}
+
+	public void setCustomer2city(String customer2city) {
+		this.customer2city = customer2city;
+	}
+
+	public String getCustomer2county() {
+		return customer2county;
+	}
+
+	public void setCustomer2county(String customer2county) {
+		this.customer2county = customer2county;
+	}
 }

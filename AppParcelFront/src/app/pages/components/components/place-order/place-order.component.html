@@ -5,7 +5,7 @@
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell">
         <div class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="内容和数量" rows="2" [(ngModel)]="res.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
+          <textarea class="weui-textarea" placeholder="内容和数量" rows="2" [(ngModel)]="res.content" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
         </div>
       </div>
     </div>
@@ -15,14 +15,14 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
+          <input class="weui-input" type="tel" [(ngModel)]="res.customer2Name" name="name" placeholder="请输入姓名"
                  weui-required>
         </div>
       </div>
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" [(ngModel)]="res.tel" name="tel" type="tel" placeholder="请输入号码" >
+          <input class="weui-input" [(ngModel)]="res.customer2Mobile" name="tel" type="tel" placeholder="请输入号码" >
         </div>
       </div>
       <div class="weui-cells">
@@ -31,7 +31,7 @@
             <label for="" class="weui-label">省</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
+            <select class="weui-select" name="province" [(ngModel)]="res.customer2Province" name="province">
               <option value="1">中国</option>
               <option value="2">美国</option>
               <option value="3">英国</option>
@@ -43,7 +43,7 @@
             <label for="" class="weui-label">市</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="city" [(ngModel)]="res.city" name="city">
+            <select class="weui-select" name="city" [(ngModel)]="res.customer2City" name="city">
               <option value="1">中国</option>
               <option value="2">美国</option>
               <option value="3">英国</option>
@@ -55,7 +55,7 @@
             <label for="" class="weui-label">县</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="county" [(ngModel)]="res.county" name="county">
+            <select class="weui-select" name="county" [(ngModel)]="res.customer2County" name="county">
               <option value="1">中国</option>
               <option value="2">美国</option>
               <option value="3">英国</option>
@@ -65,7 +65,7 @@
       </div>
       <div class="weui-cell">
         <div class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="寄达地址" rows="2" [(ngModel)]="res.address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
+          <textarea class="weui-textarea" placeholder="寄达地址" rows="2" [(ngModel)]="res.customer2Address" name="address" weui-textarea weui-cn="2" maxlength="100"></textarea>
         </div>
       </div>
     </div>
@@ -75,14 +75,14 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
+          <input class="weui-input" type="tel" [(ngModel)]="res.customerName" name="name" placeholder="请输入姓名"
                  weui-required>
         </div>
       </div>
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">联系电话</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" [(ngModel)]="res.tel" name="tel" type="tel" placeholder="请输入号码" >
+          <input class="weui-input" [(ngModel)]="res.customerMobile" name="tel" type="tel" placeholder="请输入号码" >
         </div>
       </div>
       <div class="weui-cells">

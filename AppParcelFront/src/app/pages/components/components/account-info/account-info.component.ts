@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {UserService} from "../../../../share/services/user.service";
 
 
 @Component({
@@ -7,15 +8,27 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./account-info.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AccountInfoComponent implements OnInit {
+export class AccountInfoComponent implements OnInit, OnChanges {
 
-  isEditStatus:boolean
-  constructor() { }
-
+  @Input() accountInfo
+  constructor(private userService: UserService) { }
+  editFlag:boolean = false
   ngOnInit() {
     console.debug('AccountInfoComponent init')
-    this.isEditStatus = false
   }
 
+  onSave($event){
+    console.log($event)
+    this.userService.save($event).subscribe(
+      res => {
+        this.editFlag = false
+      }
+    )
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.debug(changes['accountInfo'])
+    let currentValue = changes['accountInfo'].currentValue
+    this.editFlag = !(currentValue && currentValue.openId)
+  }
 }
