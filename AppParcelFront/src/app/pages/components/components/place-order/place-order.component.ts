@@ -1,15 +1,14 @@
-import {Component, OnInit, EventEmitter, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, EventEmitter, Output} from '@angular/core';
 import {OrderService} from "../../../../share/services/order.service";
 import {OrgService} from "../../../../share/services/org.service";
+import {equal} from "assert";
 
 @Component({
   selector: 'app-place-order',
   templateUrl: './place-order.component.html',
   styleUrls: ['./place-order.component.css']
 })
-export class PlaceOrderComponent implements OnInit, OnChanges {
+export class PlaceOrderComponent implements OnInit, /*OnChanges, */DoCheck {
 
   fromProvinceList:object[] = []
   fromCityList: object[] = []
@@ -20,7 +19,14 @@ export class PlaceOrderComponent implements OnInit, OnChanges {
   toCountyList: object[] = []
 
   @Input() accountInfo: AccountInfo
+  @Output() createOrderSuccess = new EventEmitter()
   res: OrderInfo = <OrderInfo>{}
+
+  disableChangeDetect = {
+    'province': false,
+    'city': false,
+    'county':false
+  }
   constructor(private orgService:OrgService, private orderService: OrderService) {
   }
 
@@ -46,7 +52,7 @@ export class PlaceOrderComponent implements OnInit, OnChanges {
     )
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+/*  ngOnChanges(changes: SimpleChanges): void {
     let currentValue = changes['accountInfo'].currentValue
     if(currentValue){
       this.res.customerName = currentValue.name
@@ -63,21 +69,73 @@ export class PlaceOrderComponent implements OnInit, OnChanges {
         this.fromCitySelected(this.res.city)
       }
     }
+  }*/
+
+  ngDoCheck() {
+    if(this.res != null && this.accountInfo != null ) {
+      let changeDetected: boolean = false;
+      if (this.res.customerName !== this.accountInfo.name) {
+        this.res.customerName = this.accountInfo.name
+        if (!changeDetected) changeDetected = true
+      }
+      if (this.res.customerOpenid !== this.accountInfo.openId) {
+        this.res.customerOpenid = this.accountInfo.openId
+        if (!changeDetected) changeDetected = true
+      }
+      if (this.res.customerMobile !== this.accountInfo.mobile) {
+        this.res.customerMobile = this.accountInfo.mobile
+        if (!changeDetected) changeDetected = true
+      }
+      if (this.res.province !== this.accountInfo.province ) {
+        if(!this.disableChangeDetect['province']){
+          this.res.province = this.accountInfo.province
+          this.fromProvinceSelected(this.res.province)
+          if (!changeDetected) changeDetected = true
+        }
+      }
+      if (this.res.city !== this.accountInfo.city) {
+        if(!this.disableChangeDetect['city']){
+          this.res.city = this.accountInfo.city
+          this.fromCitySelected(this.res.city)
+          if (!changeDetected) changeDetected = true
+        }
+      }
+      if (this.res.county !== this.accountInfo.county) {
+        if(!this.disableChangeDetect['county']){
+          this.res.county = this.accountInfo.county
+          if (!changeDetected) changeDetected = true
+        }
+      }
+      if (this.res.address !== this.accountInfo.address) {
+        this.res.address = this.accountInfo.address
+        if (!changeDetected) changeDetected = true
+      }
+    }
   }
 
-  fromProvinceSelected(province){
+  fromProvinceSelected(province, manualFlag=false){
+    console.debug(province)
+    if(manualFlag){
+      this.disableChangeDetect['province'] = true
+    }
     this.res.province = province
     this.orgService.getCityList(province).subscribe(
       cityList => this.fromCityList = cityList
     )
   }
-  fromCitySelected(city){
+  fromCitySelected(city, manualFlag=false){
+    if(manualFlag){
+      this.disableChangeDetect['city'] = true
+    }
     this.res.city = city
     this.orgService.getCountyList(city).subscribe(
-      county => this.fromCountyList = county
+      countyList => this.fromCountyList = countyList
     )
   }
-  fromCountySelected($event){
+  fromCountySelected($event, manualFlag=false){
+    if(manualFlag){
+      this.disableChangeDetect['county'] = true
+    }
     this.res.county = $event
   }
 
@@ -90,7 +148,7 @@ export class PlaceOrderComponent implements OnInit, OnChanges {
   toCitySelected(city){
     this.res.customer2City = city
     this.orgService.getCountyList(city).subscribe(
-      county => this.toCountyList = county
+      countyList => this.toCountyList = countyList
     )
   }
   toCountySelected($event){
@@ -102,6 +160,7 @@ export class PlaceOrderComponent implements OnInit, OnChanges {
     this.orderService.save(this.res).subscribe(
       res => {
         alert('下单成功')
+        this.createOrderSuccess.emit()
       }
     )
   }

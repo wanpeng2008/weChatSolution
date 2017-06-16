@@ -85,7 +85,7 @@
             <label for="" class="weui-label">省</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="province" [ngModel]="res.province" (ngModelChange)="fromProvinceSelected($event)" >
+            <select class="weui-select" name="province" [ngModel]="res.province" (ngModelChange)="fromProvinceSelected($event,true)" >
               <option *ngFor="let item of fromProvinceList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>
@@ -95,7 +95,7 @@
             <label for="" class="weui-label">市</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="city" [ngModel]="res.city" (ngModelChange)="fromCitySelected($event)" >
+            <select class="weui-select" name="city" [ngModel]="res.city" (ngModelChange)="fromCitySelected($event,true)" >
               <option *ngFor="let item of fromCityList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>
@@ -105,7 +105,7 @@
             <label for="" class="weui-label">县</label>
           </div>
           <div class="weui-cell__bd">
-            <select class="weui-select" name="county" [ngModel]="res.county" (ngModelChange)="fromCountySelected($event)" >
+            <select class="weui-select" name="county" [ngModel]="res.county" (ngModelChange)="fromCountySelected($event,true)" >
               <option *ngFor="let item of fromCountyList" [value]="item['code']">{{item['name']}}</option>
             </select>
           </div>

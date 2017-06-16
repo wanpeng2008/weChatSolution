@@ -1,27 +1,16 @@
 <Page [ngClass]="'list'" *ngIf="currentView == 'list'" [title]="title" [subTitle]="subTitle" [spacing]="false">
   <div class="weui-cells">
-    <div class="weui-cell weui-cell_access" (click)="showItem('item')">
+    <div class="weui-cell weui-cell_access" (click)="showItem('item')" *ngFor="let item of orderList">
       <div class="weui-cell__hd">
         <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
       <div class="weui-cell__bd">
-        <strong>单号:1482</strong> <br>
-        <small>2017-05-08 00:00:00</small><br>
-        <small>内容:文件</small><br>
+        <strong>单号:{{item.id}}</strong> <br>
+        <small>{{item.createDate | date: "y-MM-dd HH:mm:ss"}}</small><br>
+        <small>内容:{{item.content}}</small><br>
       </div>
       <div class="weui-cell__ft">已反馈</div>
     </div>
-    <a class="weui-cell weui-cell_access" (click)="showItem('item')">
-      <div class="weui-cell__hd">
-        <img src="assets/images/svg/si-glyph-cubic.svg">
-      </div>
-      <div class="weui-cell__bd">
-        <strong>单号:1482</strong> <br>
-        <small>2017-05-08 00:00:00</small><br>
-        <small>内容:文件</small><br>
-      </div>
-      <div class="weui-cell__ft">已反馈</div>
-    </a>
   </div>
 </Page>
 <div *ngIf="currentView == 'item'">

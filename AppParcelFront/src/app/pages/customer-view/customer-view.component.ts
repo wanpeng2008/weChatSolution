@@ -13,6 +13,13 @@ import {UserService} from "../../share/services/user.service";
 })
 export class CustomerViewComponent implements OnInit {
   accountInfo: object = {}
+  tabActive = {
+    'place-order': false,
+    'my-orders': false,
+    'info-inquiry': false,
+    'account-info': true
+  }
+
   constructor(private authService: AuthService, private userService: UserService) { }
   ngOnInit() {
     console.debug('CustomerViewComponent init')
@@ -28,8 +35,17 @@ export class CustomerViewComponent implements OnInit {
     }
   }
 
-  onSelect($event) {
-    //console.log($event)
+/*  refreshAccountInfo($event) {
+    console.log($event)
+    this.accountInfo = $event
+  }*/
+  createOrderSuccess($event){
+    this.setTabActive('my-orders')
+  }
+  setTabActive(tabName){
+    for(let key in this.tabActive){
+      this.tabActive[key] = (key === tabName)
+    }
   }
 
 

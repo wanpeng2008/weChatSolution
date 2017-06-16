@@ -1,4 +1,7 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import {UserService} from "../../../../share/services/user.service";
 
 
@@ -11,6 +14,7 @@ import {UserService} from "../../../../share/services/user.service";
 export class AccountInfoComponent implements OnInit, OnChanges {
 
   @Input() accountInfo
+  // @Output() accountInfoChange = new EventEmitter()
   constructor(private userService: UserService) { }
   editFlag:boolean = false
   ngOnInit() {
@@ -18,10 +22,11 @@ export class AccountInfoComponent implements OnInit, OnChanges {
   }
 
   onSave($event){
-    console.log($event)
+    // console.log($event)
     this.userService.save($event).subscribe(
       res => {
         this.editFlag = false
+        // this.accountInfoChange.emit($event)
       }
     )
   }

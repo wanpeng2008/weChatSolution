@@ -72,15 +72,17 @@ export class OrgService {
 
   getCityList(parentCode) :Observable<object[]> {
     return new Observable(observer => {
-      var province = this.getOrgByCode(this.rootOrg, parentCode);
-      var cityList = province.children;
       var result = [];
-      for (var i in cityList) {
-        var city = {
-          code: cityList[i].code,
-          name: cityList[i].name
-        };
-        result.push(city);
+      var province = this.getOrgByCode(this.rootOrg, parentCode);
+      if(province) {
+        var cityList = province.children;
+        for (var i in cityList) {
+          var city = {
+            code: cityList[i].code,
+            name: cityList[i].name
+          };
+          result.push(city);
+        }
       }
       observer.next(result)
       observer.complete()
@@ -89,15 +91,17 @@ export class OrgService {
 
   getCountyList(parentCode) :Observable<object[]> {
     return new Observable(observer => {
-      var city = this.getOrgByCode(this.rootOrg, parentCode);
-      var countyList = city.children;
       var result = [];
-      for (var i in countyList) {
-        var town = {
-          code: countyList[i].code,
-          name: countyList[i].name
-        };
-        result.push(town);
+      var city = this.getOrgByCode(this.rootOrg, parentCode);
+      if(city) {
+        var countyList = city.children;
+        for (var i in countyList) {
+          var town = {
+            code: countyList[i].code,
+            name: countyList[i].name
+          };
+          result.push(town);
+        }
       }
       observer.next(result)
       observer.complete()

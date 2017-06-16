@@ -23,6 +23,7 @@ public class OrderService {
     }
 
     public Order getOne(Long id) {
+        if(id==null) return null;
         return this.orderRepository.getOne(id);
     }
 

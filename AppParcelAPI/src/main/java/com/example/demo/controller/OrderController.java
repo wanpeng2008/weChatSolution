@@ -39,13 +39,16 @@ public class OrderController {
         Page<Order> orderList;
         Specification<Order> spec = (root, query, cb) ->{
             List<Predicate> predicateList = new ArrayList<>();
-            if(!orderVO.getCustomerOpenid().isEmpty()){
+            String customerOpenid = orderVO.getCustomerOpenid();
+            if(customerOpenid!=null && !customerOpenid.isEmpty()){
                 predicateList.add(cb.equal(root.get("customerOpenid").as(String.class),orderVO.getCustomerOpenid()));
             }
-            if(!orderVO.getDeliverOpenid().isEmpty()){
+            String deliverOpenid = orderVO.getDeliverOpenid();
+            if(deliverOpenid!=null && !deliverOpenid.isEmpty()){
                 predicateList.add(cb.equal(root.get("deliverOpenid").as(String.class),orderVO.getDeliverOpenid()));
             }
-            if(orderVO.getFlag()>0){
+            Integer flag = orderVO.getFlag();
+            if(flag!=null && flag>0){
                 predicateList.add(cb.equal(root.get("flag").as(Integer.class),orderVO.getFlag()));
             }
             Predicate p = cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
@@ -72,19 +75,17 @@ public class OrderController {
     }
     @PostMapping(produces = "application/json;charset=utf-8")
     @ResponseBody
-    OrderVO saveInsert(@RequestBody OrderVO orderVO){
-        Order order = new Order();
-        BeanUtils.copyProperties(orderVO, order);
-        return this.save(order);
-    }
-    @PostMapping(value = "/{id}", produces = "application/json;charset=utf-8")
-    @ResponseBody
-    OrderVO saveUpdate(@PathVariable Long id, @RequestBody OrderVO orderVO){
+    OrderVO save(@RequestBody OrderVO orderVO){
+        Long id = orderVO.getId();
         Order order = this.orderService.getOne(id);
+        if(order == null){
+            order = new Order();
+        }
         BeanUtils.copyProperties(orderVO, order);
-        return this.save(order);
-    }
-    private OrderVO save(Order order){
+        order.setModiDate(new Date());
+        if(order.getId()==null){
+            order.setCreateDate(new Date());
+        }
         Order savedOrder = this.orderService.save(order);
         OrderVO result = new OrderVO();
         BeanUtils.copyProperties(savedOrder, result);

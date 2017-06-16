@@ -22,7 +22,7 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ZJP_WX_CUSTOMER_ID_GENERATOR")
 	private Long id; 
 	
-	@Column(name="OPEN_ID")
+	@Column(name="OPEN_ID", unique = true, nullable = false)
 	private String openId;	
 	
 	@Column(name="COMPANY")
