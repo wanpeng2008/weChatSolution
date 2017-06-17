@@ -5,6 +5,7 @@ import {Http, RequestMethod, RequestOptions, Headers} from "@angular/http";
 import {unescape} from "querystring";
 import {AuthService} from "../../share/services/auth.service";
 import {UserService} from "../../share/services/user.service";
+import {OrderService} from "../../share/services/order.service";
 
 @Component({
   selector: 'app-customer-view',
@@ -13,6 +14,7 @@ import {UserService} from "../../share/services/user.service";
 })
 export class CustomerViewComponent implements OnInit {
   accountInfo: object = {}
+  orderList: object[] = []
   tabActive = {
     'place-order': false,
     'my-orders': false,
@@ -20,18 +22,36 @@ export class CustomerViewComponent implements OnInit {
     'account-info': true
   }
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService,
+              private userService: UserService,
+              private orderService: OrderService) { }
   ngOnInit() {
     console.debug('CustomerViewComponent init')
     if(this.authService.loggedIn()){
-      this.userService.get().subscribe(
-        data => {
-          this.accountInfo = (data && data.id) ? data : {}
-        }
-      )
+      this.loadAccountInfo()
     }else{
       this.authService.loginOauth2()
 
+    }
+  }
+  private loadAccountInfo(){
+    this.userService.get().subscribe(
+      data => {
+        this.accountInfo = (data && data.id) ? data : {}
+        this.loadOrderList()
+      }
+    )
+  }
+  private loadOrderList(){
+    if(this.accountInfo) {
+      let openId = this.accountInfo['openId']
+      if (openId != null) {
+        this.orderService.get(openId).subscribe(
+          data => {
+            this.orderList = data
+          }
+        )
+      }
     }
   }
 
@@ -41,6 +61,7 @@ export class CustomerViewComponent implements OnInit {
   }*/
   createOrderSuccess($event){
     this.setTabActive('my-orders')
+    this.loadOrderList()
   }
   setTabActive(tabName){
     for(let key in this.tabActive){

@@ -4,7 +4,7 @@
     <app-place-order [accountInfo]="accountInfo" (createOrderSuccess)="createOrderSuccess()"></app-place-order>
   </weui-tab>
   <weui-tab heading="我的订单" [active]="tabActive['my-orders']" [badge]="'dot'"  [icon]="'<img src=assets/images/svg/si-glyph-bullet-checked-list.svg>'" >
-    <app-order-list [accountInfo]="accountInfo"></app-order-list>
+    <app-order-list [accountInfo]="accountInfo" [orderList]="orderList"></app-order-list>
   </weui-tab>
   <weui-tab heading="信息查询"  [active]="tabActive['info-inquiry']" [icon]="'<img src=assets/images/svg/si-glyph-calculator-2.svg>'">
     <app-info-inquiry [title]="'信息查询'" [InquiryList]="['price-inquiry']" ></app-info-inquiry>

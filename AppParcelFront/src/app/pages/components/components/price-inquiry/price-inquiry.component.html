@@ -9,9 +9,7 @@
         </div>
         <div class="weui-cell__bd">
           <select class="weui-select" name="province" [(ngModel)]="res.province" name="province">
-            <option value="1">中国</option>
-            <option value="2">美国</option>
-            <option value="3">英国</option>
+            <option *ngFor="let item of provinceList" [value]="item['code']">{{item['name']}}</option>
           </select>
         </div>
       </div>
@@ -21,7 +19,7 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">重量(kg)</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder="请输入姓名"
+          <input class="weui-input" type="tel" [(ngModel)]="res.name" name="name" placeholder=""
                  weui-required>
         </div>
       </div>

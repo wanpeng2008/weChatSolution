@@ -1,5 +1,5 @@
 
-<Page [ngClass]="'preview'" [title]="title" [subTitle]="mailInfo.status" [spacing]="false" [showBack]="'true'" (backEvent)="back()">
+<Page [ngClass]="'preview'" [title]="title" [subTitle]="orderInfo.flag" [spacing]="false" [showBack]="'true'" (backEvent)="back()">
 
 
 
@@ -8,49 +8,52 @@
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">姓名</label>
-        <span class="weui-form-preview__value">{{mailInfo.sender.name}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.customer2Name}}</span>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">联系电话</label>
-        <span class="weui-form-preview__value">{{mailInfo.sender.contact}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.customer2Mobile}}</span>
       </div>
     </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">省</label>
+    <div class="weui-cells">
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">省</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="toProvince" [ngModel]="orderInfo.customer2Province" >
+            <option *ngFor="let item of toProvinceList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+
+        </div>
       </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">浙江</option>
-        </select>
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">市</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="toCity" [ngModel]="orderInfo.customer2City" >
+            <option *ngFor="let item of toCityList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">市</label>
-      </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
-        </select>
-      </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">县</label>
-      </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
-        </select>
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">县</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="toCounty" [ngModel]="orderInfo.customer2County"  >
+            <option *ngFor="let item of toCountyList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">地址</label>
-        <span class="weui-form-preview__value">{{mailInfo.sender.address}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.address}}</span>
       </div>
     </div>
   </div>
@@ -60,49 +63,51 @@
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">姓名</label>
-        <span class="weui-form-preview__value">{{mailInfo.receiver.name}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.customerName}}</span>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">联系电话</label>
-        <span class="weui-form-preview__value">{{mailInfo.receiver.contact}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.customerMobile}}</span>
       </div>
     </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">省</label>
+    <div class="weui-cells">
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">省</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="province" [ngModel]="orderInfo.province"  >
+            <option *ngFor="let item of fromProvinceList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+        </div>
       </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">浙江</option>
-        </select>
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">市</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="city" [ngModel]="orderInfo.city" >
+            <option *ngFor="let item of fromCityList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">市</label>
-      </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
-        </select>
-      </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-      <div class="weui-cell__bd">
-        <label for="" class="weui-label">县</label>
-      </div>
-      <div class="weui-cell__bd">
-        <select class="weui-select" value="1" disabled>
-          <option value="1">杭州</option>
-        </select>
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">县</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="county" [ngModel]="orderInfo.county" >
+            <option *ngFor="let item of fromCountyList" [value]="item['code']">{{item['name']}}</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <label class="weui-form-preview__label">地址</label>
-        <span class="weui-form-preview__value">{{mailInfo.receiver.address}}</span>
+        <span class="weui-form-preview__value">{{orderInfo.address}}</span>
       </div>
     </div>
 
@@ -111,49 +116,50 @@
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">内容</label>
-          <span class="weui-form-preview__value">{{mailInfo.content}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.content}}</span>
         </div>
       </div>
     </div>
-    <div class="weui-form-preview" *ngIf="mailInfo.mailId||''!==''">
+    <div class="weui-form-preview" *ngIf="orderInfo.mailId||''!==''">
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">运单号</label>
-          <span class="weui-form-preview__value">{{mailInfo.mailId}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.mailId}}</span>
         </div>
       </div>
     </div>
-    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+    <div class="weui-form-preview" *ngIf="orderInfo.createTime">
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">创建时间</label>
-          <span class="weui-form-preview__value">{{mailInfo.createTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.createTime | date: "yy-MM-dd HH:mm:ss"}}</span>
         </div>
       </div>
     </div>
-    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+    <div class="weui-form-preview" *ngIf="orderInfo.createTime">
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">派单时间</label>
-          <span class="weui-form-preview__value">{{mailInfo.assignTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.assignTime | date: "yy-MM-dd HH:mm:ss"}}</span>
         </div>
       </div>
     </div>
-    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+    <div class="weui-form-preview" *ngIf="orderInfo.createTime">
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">接单时间</label>
-          <span class="weui-form-preview__value">{{mailInfo.takenTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.takenTime | date: "yy-MM-dd HH:mm:ss"}}</span>
         </div>
       </div>
     </div>
-    <div class="weui-form-preview" *ngIf="mailInfo.createTime">
+    <div class="weui-form-preview" *ngIf="orderInfo.createTime">
       <div class="weui-form-preview__bd">
         <div class="weui-form-preview__item">
           <label class="weui-form-preview__label">完成时间</label>
-          <span class="weui-form-preview__value">{{mailInfo.finishTime | date: "yy-MM-dd HH:mm:ss"}}</span>
+          <span class="weui-form-preview__value">{{orderInfo.finishTime | date: "yy-MM-dd HH:mm:ss"}}</span>
         </div>
       </div>
     </div>
   </div>
+  {{orderInfo | json}}
 </Page>

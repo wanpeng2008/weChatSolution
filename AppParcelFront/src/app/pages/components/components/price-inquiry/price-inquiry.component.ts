@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {OrgService} from "../../../../share/services/org.service";
 
 @Component({
   selector: 'app-price-inquiry',
@@ -7,9 +8,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class PriceInquiryComponent implements OnInit {
 
-  constructor() { }
+  provinceList: object[] = []
+  constructor(private orgService:OrgService) { }
 
   ngOnInit() {
+    this.orgService.getProvinceList().subscribe(
+      provinceList => {
+        this.provinceList = provinceList
+      }
+    )
   }
   res: any = {
     agree: true

@@ -39,9 +39,9 @@ public class OrderVO {
     private String mailCode;
     private Date acceptDate;
     private Integer alert;
-    private String customer2province;
-    private String customer2city;
-    private String customer2county;
+    private String customer2Province;
+    private String customer2City;
+    private String customer2County;
 
     public Long getId() {
         return id;
@@ -315,27 +315,27 @@ public class OrderVO {
         this.alert = alert;
     }
 
-    public String getCustomer2province() {
-        return customer2province;
+    public String getCustomer2Province() {
+        return customer2Province;
     }
 
-    public void setCustomer2province(String customer2province) {
-        this.customer2province = customer2province;
+    public void setCustomer2Province(String customer2Province) {
+        this.customer2Province = customer2Province;
     }
 
-    public String getCustomer2city() {
-        return customer2city;
+    public String getCustomer2City() {
+        return customer2City;
     }
 
-    public void setCustomer2city(String customer2city) {
-        this.customer2city = customer2city;
+    public void setCustomer2City(String customer2City) {
+        this.customer2City = customer2City;
     }
 
-    public String getCustomer2county() {
-        return customer2county;
+    public String getCustomer2County() {
+        return customer2County;
     }
 
-    public void setCustomer2county(String customer2county) {
-        this.customer2county = customer2county;
+    public void setCustomer2County(String customer2County) {
+        this.customer2County = customer2County;
     }
 }

@@ -1,6 +1,6 @@
 <Page [ngClass]="'list'" *ngIf="currentView == 'list'" [title]="title" [subTitle]="subTitle" [spacing]="false">
   <div class="weui-cells">
-    <div class="weui-cell weui-cell_access" (click)="showItem('item')" *ngFor="let item of orderList">
+    <div class="weui-cell weui-cell_access" (click)="showItem(item)" *ngFor="let item of orderList">
       <div class="weui-cell__hd">
         <img src="assets/images/svg/si-glyph-cubic.svg">
       </div>
@@ -14,7 +14,7 @@
   </div>
 </Page>
 <div *ngIf="currentView == 'item'">
-  <app-order-info (backEvent)="showList()"></app-order-info>
+  <app-order-info [orderInfo]="currentOrder" (backEvent)="showList()"></app-order-info>
 </div>
 
 
