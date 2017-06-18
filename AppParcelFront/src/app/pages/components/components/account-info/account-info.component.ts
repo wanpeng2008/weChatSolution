@@ -13,7 +13,7 @@ import {UserService} from "../../../../share/services/user.service";
 })
 export class AccountInfoComponent implements OnInit, OnChanges {
 
-  @Input() accountInfo
+  @Input() accountInfo = {}
   // @Output() accountInfoChange = new EventEmitter()
   constructor(private userService: UserService) { }
   editFlag:boolean = false

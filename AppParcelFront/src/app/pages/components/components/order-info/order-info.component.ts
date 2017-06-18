@@ -12,7 +12,6 @@ export class OrderInfoComponent implements OnInit, OnChanges {
   constructor(private orderService: OrderService, private orgService: OrgService) { }
 
   openId:string = ""
-  currentOrder: object = {}
   fromProvinceList: object[] = []
   fromCityList: object[] = []
   fromCountyList: object[] = []
@@ -62,5 +61,12 @@ export class OrderInfoComponent implements OnInit, OnChanges {
         }
       }
     }
+  }
+
+  canAccept(){
+    return this.orderInfo['flag'] == OrderService.OrderStatus_Waiting
+  }
+  canFinish(){
+    return this.orderInfo['flag'] == OrderService.OrderStatus_Accepted
   }
 }

@@ -160,6 +160,10 @@
         </div>
       </div>
     </div>
+    <div class="weui-form-preview__ft">
+      <button type="submit" *ngIf="canAccept()" class="weui-form-preview__btn weui-form-preview__btn_primary" (click)="accept()">接单</button>
+      <button type="submit" *ngIf="canFinish()" class="weui-form-preview__btn weui-form-preview__btn_primary" (click)="finish()">完成</button>
+    </div>
   </div>
   {{orderInfo | json}}
 </Page>

@@ -157,6 +157,7 @@ export class PlaceOrderComponent implements OnInit, /*OnChanges, */DoCheck {
 
 
   onSave() {
+    this.res['flag'] = OrderService.OrderStatus_Waiting
     this.orderService.save(this.res).subscribe(
       res => {
         alert('下单成功')

@@ -46,7 +46,7 @@ export class CustomerViewComponent implements OnInit {
     if(this.accountInfo) {
       let openId = this.accountInfo['openId']
       if (openId != null) {
-        this.orderService.get(openId).subscribe(
+        this.orderService.get({'customerOpenid':openId}).subscribe(
           data => {
             this.orderList = data
           }
@@ -59,6 +59,9 @@ export class CustomerViewComponent implements OnInit {
     console.log($event)
     this.accountInfo = $event
   }*/
+  refreshOrderList(){
+    this.loadOrderList()
+  }
   createOrderSuccess($event){
     this.setTabActive('my-orders')
     this.loadOrderList()

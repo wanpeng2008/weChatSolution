@@ -6,7 +6,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-#      dialect:  org.hibernate.dialect.PostgreSQLDialect
+      dialect:  org.hibernate.dialect.PostgreSQLDialect
 #  datasource:
 #    platform: postgres
 #    url:  jdbc:postgresql://localhost:5432/weixin

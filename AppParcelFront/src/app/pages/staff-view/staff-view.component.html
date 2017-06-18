@@ -1,21 +1,23 @@
 
 <weui-tabbar>
-  <weui-tab heading="待接单" [badge]="'dot'"  [icon]="'<img src=assets/images/svg/si-glyph-mail-empty.svg>'">
-    <app-order-list [title]="'待接单'"></app-order-list>
+  <weui-tab heading="待接单" [badge]="'dot'" [active]="tabActive['waiting-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail-empty.svg>'">
+    <app-order-list [title]="'待接单'" [accountInfo]="accountInfo" [orderList]="waitingOrderList" (acceptOrderSuccess)="acceptOrderSuccess()"></app-order-list>
   </weui-tab>
-  <weui-tab heading="已接单" [badge]="'dot'" [icon]="'<img src=assets/images/svg/si-glyph-mail-has-mail.svg>'" >
-    <app-order-list [title]="'已接单'"></app-order-list>
+  <weui-tab heading="已接单" [badge]="'dot'" [active]="tabActive['accepted-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail-has-mail.svg>'" >
+    <app-order-list [title]="'已接单'" [accountInfo]="accountInfo" [orderList]="processingOrderList" (processOrderSuccess)="processOrderSuccess()"></app-order-list>
   </weui-tab>
-  <weui-tab heading="完成单" [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'" >
-    <app-order-list [title]="'完成单'"></app-order-list>
+  <weui-tab heading="完成单" [active]="tabActive['finished-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'" >
+    <app-order-list [title]="'完成单'" [accountInfo]="accountInfo" [orderList]="finishedOrderList" ></app-order-list>
   </weui-tab>
-  <weui-tab heading="信息查询"  [icon]="'<img src=assets/images/svg/si-glyph-calculator-2.svg>'">
+  <weui-tab heading="信息查询" [active]="tabActive['info-inquiry']" [icon]="'<img src=assets/images/svg/si-glyph-calculator-2.svg>'">
     <app-info-inquiry [title]="'信息查询'" [InquiryList]="['weight-inquiry']" ></app-info-inquiry>
   </weui-tab>
-  <weui-tab heading="我的账户" [active]="'true'" [icon]="'<img src=assets/images/svg/si-glyph-person-2.svg>'" (select)="onSelect($event)">
-    <app-account-info></app-account-info>
+  <weui-tab heading="我的账户" [active]="tabActive['account-info']" [icon]="'<img src=assets/images/svg/si-glyph-person-2.svg>'" >
+    <app-account-info [accountInfo]="accountInfo"></app-account-info>
   </weui-tab>
 </weui-tabbar>
+
+
 
 
 

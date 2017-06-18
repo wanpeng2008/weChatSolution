@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output} from '@angular/core';
 import {OrderService} from "../../../../share/services/order.service";
 import {OrgService} from "../../../../share/services/org.service";
 
@@ -13,10 +13,11 @@ export class OrderListComponent implements OnInit, OnChanges {
   @Input() subTitle:string = '可下拉刷新'
   @Input() accountInfo
   @Input() orderList
+  @Output() refreshOrderList = new EventEmitter()
   constructor(private orderService: OrderService, private orgService: OrgService) { }
 
   currentView:string = 'list'
-  openId:string = ""
+  //openId:string = ""
   currentOrder: object = {}
   ngOnInit() {
     console.debug('OrderListComponent init')
@@ -26,8 +27,10 @@ export class OrderListComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['accountInfo']) {
       let currentValue = changes['accountInfo'].currentValue
-      if (currentValue && currentValue.openId && currentValue.openId !== this.openId) {
-        this.openId = currentValue.openId
+      let previousValue = changes['accountInfo'].previousValue
+      if (currentValue && currentValue.openId
+        && (!previousValue || currentValue.openId !== previousValue.openId)) {
+        //this.openId = currentValue.openId
         this.showList()
       }
     }
@@ -38,11 +41,7 @@ export class OrderListComponent implements OnInit, OnChanges {
   }
   showList(){
     this.currentView = 'list'
-    if(this.openId) {
-      this.orderService.get(this.openId).subscribe(
-        res => this.orderList = res
-      )
-    }
+    this.refreshOrderList.emit()
   }
 
 }
