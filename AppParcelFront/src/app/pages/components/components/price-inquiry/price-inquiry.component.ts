@@ -25,4 +25,7 @@ export class PriceInquiryComponent implements OnInit {
   back(){
     this.backEvent.emit()
   }
+  onSave(){
+
+  }
 }

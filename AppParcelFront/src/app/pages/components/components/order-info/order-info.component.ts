@@ -10,7 +10,8 @@ import {OrderService} from "../../../../share/services/order.service";
 export class OrderInfoComponent implements OnInit, OnChanges {
 
   constructor(private orderService: OrderService, private orgService: OrgService) { }
-
+  @Input() orderInfo = {}
+  @Output() backEvent = new EventEmitter<any>()
   openId:string = ""
   fromProvinceList: object[] = []
   fromCityList: object[] = []
@@ -30,8 +31,7 @@ export class OrderInfoComponent implements OnInit, OnChanges {
       }
     )
   }
-  @Input() orderInfo = {}
-  @Output() backEvent = new EventEmitter<any>()
+
   back(){
     this.backEvent.emit()
   }

@@ -1,10 +1,10 @@
 
 <weui-tabbar>
   <weui-tab heading="待接单" [badge]="'dot'" [active]="tabActive['waiting-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail-empty.svg>'">
-    <app-order-list [title]="'待接单'" [accountInfo]="accountInfo" [orderList]="waitingOrderList" (acceptOrderSuccess)="acceptOrderSuccess()"></app-order-list>
+    <app-order-list [title]="'待接单'" [accountInfo]="accountInfo" [orderList]="waitingOrderList" (acceptOrderSuccess)="acceptOrderSuccess($event)"></app-order-list>
   </weui-tab>
   <weui-tab heading="已接单" [badge]="'dot'" [active]="tabActive['accepted-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail-has-mail.svg>'" >
-    <app-order-list [title]="'已接单'" [accountInfo]="accountInfo" [orderList]="processingOrderList" (processOrderSuccess)="processOrderSuccess()"></app-order-list>
+    <app-order-list [title]="'已接单'" [accountInfo]="accountInfo" [orderList]="processingOrderList" (processOrderSuccess)="processOrderSuccess($event)"></app-order-list>
   </weui-tab>
   <weui-tab heading="完成单" [active]="tabActive['finished-orders']" [icon]="'<img src=assets/images/svg/si-glyph-mail.svg>'" >
     <app-order-list [title]="'完成单'" [accountInfo]="accountInfo" [orderList]="finishedOrderList" ></app-order-list>

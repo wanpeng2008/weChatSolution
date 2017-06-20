@@ -18,4 +18,5 @@ export class WeightInquiryComponent implements OnInit {
   back(){
     this.backEvent.emit()
   }
+  onSave(){}
 }

@@ -1,5 +1,4 @@
-<p>{{status}}</p>
 <app-account-info-view [accountInfo]="accountInfo" *ngIf="!editFlag" (editEvent)="editFlag=true"></app-account-info-view>
 <app-account-info-edit *ngIf="editFlag" [accountInfo]="accountInfo" (saveEvent)="onSave($event)"></app-account-info-edit>
-<p>{{status}}</p>
+
 

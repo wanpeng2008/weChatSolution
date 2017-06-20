@@ -59,7 +59,7 @@ export class CustomerViewComponent implements OnInit {
     console.log($event)
     this.accountInfo = $event
   }*/
-  refreshOrderList(){
+  refreshOrderList($event){
     this.loadOrderList()
   }
   createOrderSuccess($event){
